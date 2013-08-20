@@ -1,7 +1,28 @@
-Comparison of tools dedicated to Semantic Measures Computation
+Evaluation of tools for Semantic Measures
 ==============================================================
 
 This project aims at comparing tools dedicated to semantic measures computation.
-It has been initiated in order to evaluated the Semantic Measures Library (http://www.semantic-measures-library.org/). 
+It has been initiated in order to evaluated the Semantic Measures Library (http://www.semantic-measures-library.org/), see the competing interest section for more information. 
 
-The project contains the source code and details regarding the materials and methods used in the evaluations. 
+The project contains the source code and details regarding the materials and methods used in the evaluations.
+A detailed version of the results and discussions are provided at http://www.semantic-measures-library.org/index.php?q=performance
+
+> Do not hesitate to help us improve the benchmark and to upgrade the tests with new tools or more recent versions of tools.
+
+We propose:
+
+1. Context specific evaluations. Numerous library and tools have been developed for domain-specific use cases (e.g. ontologies). 
+Considering specific domain of use, we compare the tools in terms of performance and regarding other criteria such as dependencies, difficulty to use...
+
+ * Molecular Biology and Biomedicine
+   * Gene Ontology
+   * Disease Ontology
+ * WordNet
+ 
+Competing interests
+--------------------
+
+This project has been initiated in order to evaluate the Semantic Measures Library SML.
+As the developers of these tests are also developers of the SML we cannot ensure that this evaluation is free from bias.
+Indeed we better know how to configure and use the SML than other tools. Do not hesitate to help us improve those tests.
+
