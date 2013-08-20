@@ -52,7 +52,8 @@ see the section dedicated to tools for more information such as tool versions.
 List of Tools
 --------------
 
-This listing contains the tools which have been included in the evaluation
+This listing contains the tools which have been included in the evaluation.
+The tools are available at ``resources/tools``
 
 #### Semantic Measures Library 
 url: http://semantic-measures-library.com
