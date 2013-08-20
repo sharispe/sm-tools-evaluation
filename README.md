@@ -39,6 +39,38 @@ Two series of tests have been performed:
 
 see the section dedicated to tools for more information such as tool versions.
 
+##### Term to Term computations
+
+This test aims at comparing the tools in computing similarity between terms defined in the Gene Ontology.
+Four tests have been designed. 
+Each test is composed of a set of pairs of terms for which we want the semantic similarity to be computed:
+
+* 10k pairs of terms
+* 100k pairs of terms
+* 1M pairs of terms
+* 100M pairs of terms
+
+The sets of pairs of terms have been generated using the source code available at: 
+TODO
+
+##### Gene products comparison
+
+This test aims at comparing the tools in computing similarity between gene products annotated by genes defined in the Gene Ontology.
+Four tests have been designed. 
+Each test is composed of a set of gene product for which we want the semantic similarity to be computed:
+
+* 10k pairs of terms
+* 100k pairs of terms
+* 1M pairs of terms
+* 100M pairs of terms
+
+The sets of pairs of terms have been generated using the source code available at: 
+TODO
+
+see the section dedicated to tools for more information such as tool versions.
+
+
+
 
 #### Disease Ontology
 
@@ -53,7 +85,7 @@ List of Tools
 --------------
 
 This listing contains the tools which have been included in the evaluation.
-The tools are available at ``resources/tools``
+The tools are available at ``./resources/tools`` (Please refer to the corresponding documentation for the installation)
 
 #### Semantic Measures Library 
 url: http://semantic-measures-library.com
@@ -63,6 +95,21 @@ version: 0.6
 
 url: http://cran.r-project.org/src/contrib/Archive/GOSim/
 version: 1.2.7.7
+
+##### Installation
+
+Upgrade R version higher if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
+
+In R console:
+// Version of R 3.0.1
+// First install dependencies
+install.packages(c("Rcpp","igraph","flexmix", "RBGL", "graph", "corpcor", "org.Hs.eg.db"))
+
+source("http://bioconductor.org/biocLite.R")
+biocLite(c("GO.db", "AnnotationDbi", "annotate", "topGO"))
+
+// Next install the corresponding package (change the location of the package)
+install.packages("/home/seb/tools/semantic-measures/GOSemSim_1.18.0.tar.gz", repos = NULL, type ="source")
 
 #### GOSemSim
 
