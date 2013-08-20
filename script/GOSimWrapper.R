@@ -1,6 +1,6 @@
 #!/usr/bin/Rscript
 # Script used to compute semantic measures using GOSim Library
-# Version 0.1
+# Script Version 0.1
 
 args = commandArgs(trailingOnly = TRUE)
 
@@ -38,7 +38,7 @@ if(testType == "T2T"){
 library("GOSim")
 
 conn = file(input, "r")
-outConn = file(output)
+sink(file = output, append = FALSE, type = c("output", "message"),split = FALSE)
 
 
 
@@ -65,11 +65,11 @@ while(length(line <- readLines(conn, 1)) > 0) {
     	mat <- getGeneSim(c(e1,e2),similarity="max",similarityTerm="Lin",verbose=FALSE)
     }
 
-    writeLines(paste(e1,"\t",e2,"\t",mat[[2]],"\n"), outConn)
+    cat(e1,"\t",e2,"\t",mat[[2]],"\n")
     
 }
 
 close(conn)
-close(outConn)
+sink()
 
-cat("Finished, consult: ",output)
+cat("Finished, consult: ",output,"\n")

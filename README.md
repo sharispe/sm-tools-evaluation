@@ -39,6 +39,17 @@ Two series of tests have been performed:
 
 see the section dedicated to tools for more information such as tool versions.
 
+#### Dataset
+
+The version of the Gene Ontology used during the test is the lite version of 2013 03 02
+ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
+
+GOSim & GoSemSim depends on the GO.db package proposed by Bioinconductor.
+The version of Bioiconductor which has been used in this test is version 2.12
+see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/GO.db/man/GO.db.pdf for details regarding the version of the GO loaded in Bioconductor 2.12.
+
+FastSemSim loads any GO specified in OBO-XML and the SML is able to load the OWL and OBO formatted versions.
+
 ##### Term to Term computations
 
 This test aims at comparing the tools in computing similarity between terms defined in the Gene Ontology.
@@ -109,8 +120,6 @@ biocLite(c("annotate", "topGO", ...))
 // see above for dependencies
 // Next install the corresponding package (change the location of the package)
 install.packages("/home/seb/tools/semantic-measures/GOSim_1.2.7.7.tar.gz", repos = NULL, type ="source")
-
-
 
 #### GOSemSim
 
