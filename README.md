@@ -103,18 +103,34 @@ Upgrade R version higher if required (Ubuntu users: http://cran.cnr.berkeley.edu
 In R console:
 // Version of R 3.0.1
 // First install dependencies
-install.packages(c("Rcpp","igraph","flexmix", "RBGL", "graph", "corpcor", "org.Hs.eg.db"))
-
 source("http://bioconductor.org/biocLite.R")
-biocLite(c("GO.db", "AnnotationDbi", "annotate", "topGO"))
+biocLite(c("annotate", "topGO", ...))
 
+// see above for dependencies
 // Next install the corresponding package (change the location of the package)
-install.packages("/home/seb/tools/semantic-measures/GOSemSim_1.18.0.tar.gz", repos = NULL, type ="source")
+install.packages("/home/seb/tools/semantic-measures/GOSim_1.2.7.7.tar.gz", repos = NULL, type ="source")
+
+
 
 #### GOSemSim
 
 url: http://www.bioconductor.org/packages/release/bioc/html/GOSemSim.html
 version:  1.18.0
+
+##### Installation
+
+In R console:
+// Version of R 3.0.1
+// First install dependencies
+install.packages(c("Rcpp","igraph","flexmix", "RBGL", "graph", "corpcor", "org.Hs.eg.db"))
+
+source("http://bioconductor.org/biocLite.R")
+biocLite(c("GO.db", "AnnotationDbi", "annotate", "topGO"))
+
+Upgrade R version higher if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
+// see above for dependencies
+// Next install the corresponding package (change the location of the package)
+install.packages("/home/seb/tools/semantic-measures/GOSemSim_1.18.0.tar.gz", repos = NULL, type ="source")
 
 #### FastSemSim
 
