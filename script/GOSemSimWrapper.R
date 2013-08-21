@@ -54,10 +54,6 @@ while(length(line <- readLines(conn, 1)) > 0) {
 
 
     #cat(e1,"\t",e2,"\n")
-    
-    # We only need to compute a single semantic similarity.
-    # However, getTermSim and getGeneSim compute the whole matrix which can lead to 
-    # a serious disadvantage in term of running time
     if(pairwise){
     	r <- goSim(e1, e2, ont="MF", measure="Lin")
     }

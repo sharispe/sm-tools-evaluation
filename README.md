@@ -1,4 +1,4 @@
-Evaluation of tools for Semantic Measures
+Evaluation of Software for Semantic Measures
 ==============================================================
 
 This project aims at comparing tools dedicated to semantic measures computation.
@@ -8,7 +8,7 @@ In addition, the project currently focuses on graph-based semantic measures and 
 The project contains the source code and details regarding the materials and methods used in the evaluations.
 Results and discussions are currently provided at http://www.semantic-measures-library.org/index.php?q=performance
 
-> Do not hesitate to help us improve the benchmark and to upgrade the tests with new tools or more recent versions of tools.
+> Do not hesitate to help us improve the benchmark and to upgrade the tests with new tools or new versions of considered tools.
 
 We propose:
 
@@ -31,6 +31,9 @@ Two series of tests have been performed:
 * Term to Term computations, in which tools are compared computing the semantic similarity of pairs of terms defined in the Gene Ontology.
 * Gene Product to Gene Product computations, in which tools are compared computing the semantic similarity of genes annotated by terms defined in the Gene Ontology.
 
+In all the tests we consider that:
+* No restriction is applied on the Evidence Code associated to the annotations linked to gene product (e.g., IEA annotations are considered)
+
 ##### Tools compared 
 * SML
 * GOSim
@@ -41,14 +44,22 @@ see the section dedicated to tools for more information such as tool versions.
 
 #### Dataset
 
+##### Gene Ontology Version
+
 The version of the Gene Ontology used during the test is the lite version of 2013 03 02
 ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
 
-GOSim & GoSemSim depends on the GO.db package proposed by Bioinconductor.
+GOSim & GoSemSim depends on the GO.db package proposed by Bioconductor and are therefore constrained to be used with the version associated to Bioconductor.
 The version of Bioiconductor which has been used in this test is version 2.12
 see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/GO.db/man/GO.db.pdf for details regarding the version of the GO loaded in Bioconductor 2.12.
 
-FastSemSim loads any GO specified in OBO-XML and the SML is able to load the OWL and OBO formatted versions.
+FastSemSim loads any GO specified in OBO-XML and the SML is able to load the OWL and RDF-XML and OBO formatted versions.
+
+Downloads:
+* go_20130302-termdb.obo-xml.gz	3.7 MB	3/4/13 10:35:00 AM
+* go_20130302-termdb.rdf-xml.gz	3.7 MB	3/4/13 10:35:00 AM
+
+##### Input Query 
 
 ##### Term to Term computations
 
@@ -99,52 +110,69 @@ This listing contains the tools which have been included in the evaluation.
 The tools are available at ``./resources/tools`` (Please refer to the corresponding documentation for the installation)
 
 #### Semantic Measures Library 
-url: http://semantic-measures-library.com
+url: http://www.semantic-measures-library.com
 version: 0.6
 
 #### GOSim
 
 url: http://cran.r-project.org/src/contrib/Archive/GOSim/
+
 version: 1.2.7.7
 
 ##### Installation
 
-Upgrade R version higher if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
+We used R version 3.0.1
+Upgrade R version if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
 
 In R console:
-// Version of R 3.0.1
-// First install dependencies
-source("http://bioconductor.org/biocLite.R")
-biocLite(c("annotate", "topGO", ...))
 
-// see above for dependencies
-// Next install the corresponding package (change the location of the package)
-install.packages("/home/seb/tools/semantic-measures/GOSim_1.2.7.7.tar.gz", repos = NULL, type ="source")
+First install dependencies, they are specified when you try to install the software
+
+`source("http://bioconductor.org/biocLite.R")`
+
+`biocLite(c("annotate", "topGO", ...))`
+
+
+Next install the corresponding package (change the location of the package)
+`install.packages(".../GOSim_1.2.7.7.tar.gz", repos = NULL, type ="source")`
 
 #### GOSemSim
 
 url: http://www.bioconductor.org/packages/release/bioc/html/GOSemSim.html
+
 version:  1.18.0
 
 ##### Installation
 
+We used R version 3.0.1
+Upgrade R version if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
+
 In R console:
-// Version of R 3.0.1
-// First install dependencies
-install.packages(c("Rcpp","igraph","flexmix", "RBGL", "graph", "corpcor", "org.Hs.eg.db"))
 
-source("http://bioconductor.org/biocLite.R")
-biocLite(c("GO.db", "AnnotationDbi", "annotate", "topGO"))
+First install dependencies, they are specified when you try to install the software
 
-Upgrade R version higher if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
-// see above for dependencies
-// Next install the corresponding package (change the location of the package)
-install.packages("/home/seb/tools/semantic-measures/GOSemSim_1.18.0.tar.gz", repos = NULL, type ="source")
+`install.packages(c("Rcpp","igraph","flexmix", "RBGL", "graph", "corpcor", "org.Hs.eg.db"))`
+
+`source("http://bioconductor.org/biocLite.R")`
+
+`biocLite(c("GO.db", "AnnotationDbi", "annotate", "topGO"))`
+
+Next install the corresponding package (change the location of the package)
+`install.packages(".../GOSemSim_1.18.0.tar.gz", repos = NULL, type ="source")`
 
 #### FastSemSim
 
 url: http://sourceforge.net/projects/fastsemsim/
+
 version: 0.7.1
+
+##### Installation
+
+Considering Python is already installed
+
+Unzip the archive
+
+as Root ./install.sh
 
 #### DOSim
 
