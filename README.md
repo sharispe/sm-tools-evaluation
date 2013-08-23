@@ -12,7 +12,7 @@ Results and discussions are currently provided at http://www.semantic-measures-l
 
 We propose:
 
-1. Context specific evaluations. Numerous library and tools have been developed for domain-specific use cases (e.g. ontologies). 
+1. Domain-specific evaluations. Numerous library and tools have been developed for domain-specific use cases (e.g. ontologies). 
 Considering specific domain of use, we compare the tools in terms of performance and regarding other criteria such as dependencies, difficulty to use...
 
  * Molecular Biology and Biomedicine
@@ -20,12 +20,11 @@ Considering specific domain of use, we compare the tools in terms of performance
    * Disease Ontology
  * WordNet
 
-Context Specific Evaluations
+
+Molecular Biology and Biomedicine
 --------------
 
-### Molecular Biology and Biomedicine
-
-#### Gene Ontology
+### Gene Ontology
 
 Two series of tests have been performed:
 * Term to Term computations, in which tools are compared computing the semantic similarity of pairs of terms defined in the Gene Ontology.
@@ -34,44 +33,53 @@ Two series of tests have been performed:
 In all the tests we consider that:
 * No restriction is applied on the Evidence Code associated to the annotations linked to gene product (e.g., IEA annotations are considered)
 
-##### Tools compared 
+The datasets relative to this test are available at */go e.g. scripts/go
+
+#### Tools compared 
+
+See the section dedicated to tools for more information (tool versions).
+
 * SML
 * GOSim
 * GOSemSim
 * FastSemSim
 
-see the section dedicated to tools for more information such as tool versions.
+
 
 #### Dataset
 
-##### Gene Ontology Version
+The Dataset associated to this test is contained in the directory /data/go  
+(please download the dataset from LINK_TO_THE_DATASET)
 
-The version of the Gene Ontology used during the test is the lite version of 2013 03 02
-ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
+##### Gene Ontology
 
-GOSim & GoSemSim depends on the GO.db package proposed by Bioconductor and are therefore constrained to be used with the version associated to Bioconductor.
-The version of Bioiconductor which has been used in this test is version 2.12
-see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/GO.db/man/GO.db.pdf for details regarding the version of the GO loaded in Bioconductor 2.12.
+The version of the Gene Ontology used for this test is the lite version of 2013 03 02 (which can be downloaded at ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/)
+
+GOSim & GoSemSim depends on the GO.db package proposed by Bioconductor and are therefore constrained to be used with the version associated to Bioconductor. The version of Bioiconductor which has been used in this test is version 2.12 see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/GO.db/man/GO.db.pdf for details regarding the information relative to the GO loaded in Bioconductor 2.12.
 
 FastSemSim loads any GO specified in OBO-XML and the SML is able to load the OWL and RDF-XML and OBO formatted versions.
 
-Downloads:
+Downloads (ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/):
+The file which have been used for this tests are
 * go_20130302-termdb.obo-xml.gz	3.7 MB	3/4/13 10:35:00 AM
-* go_20130302-termdb.rdf-xml.gz	3.7 MB	3/4/13 10:35:00 AM
+* go_20130302-termdb.owl.gz	3.7 MB	3/4/13 10:35:00 AM
 
-from ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
+They can be found in the directory /data/go/onto
 
-##### Annotation Version
+##### Annotations
 
 GOSim and GOSemSim rely on the annotations defined in the R package org.Hs.eg.GO.
 FastSemSim and the SML rely on GAF or plain annotations files.
-In order to ensure that the annotations used for the evaluation are the same, we created a dump of org.Hs.eg.GO using the R script named dump_orgHsegGO.R.
-see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/org.Hs.eg.db/man/org.Hs.eg.db.pdf for more information on org.Hs.eg.GO
+In order to ensure that the annotations used for the evaluation are the same, we created a dump of org.Hs.eg.GO using the R script named dump_orgHsegGO.R. (/scripts/go/)
+see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/org.Hs.eg.db/man/org.Hs.eg.db.pdf for more information on the version of the annotations used. 
 
 The format required for the SML to import TSV file is sligthly different, the conversion is made using the script changeDumpAnnotationTSVFormat.py
 
+The annotation dump can be found at /resources/data/go/annot:
+* dump_orgHsegGO.tsv
+* dump_orgHsegGO_sml.tsv
 
-##### Term to Term computations
+#### Test 1: Term to Term computations
 
 This test aims at comparing the tools in computing similarity between terms defined in the Gene Ontology.
 Four tests have been designed. 
@@ -82,17 +90,51 @@ Each test is composed of a set of pairs of terms for which we want the semantic 
 * 1M pairs of terms
 * 100M pairs of terms
 
-The sets of pairs of terms have been generated using the Java class BenchmarkBuilder_GO_TermToTerm?
+For each test, 3 samples have been generated in order to reduce the probability the evaluation of the performance is biased by abnormal sampling.
+As an example the test composed of 1K pairs of terms is composed of three different samples r1, r2, r3.
+Moreover for each sample (e.g. r1), three runs (r1.0, r1.1, r1.2) have been performed, to reduce the probability results are biased by abnormal operating system behavior or material lags.
+
+The sets of pairs of terms composing the 3 samples of each test have been generated using the Java class BenchmarkBuilder_GO_TermToTerm
 
 BenchmarkBuilder_GO_TermToTerm is used to generate benchmarks composed of pairs of GO terms. 
 It has been used to generate TSV files containing pairs of GO terms identifiers (one per line). 
 Four sizes of benchmarks are considered (1K, 10K, 1M and 100M). 
-For each size, three sets of pairs are generated.
-
+As we said, for each size, three sets of pairs are generated.
 The benchmarks are built selecting random pairs of terms specified in the Biological Process aspect of the GO. 
-In other terms, all pairs are of classes are composed of classes subsumed by GO:0008150
+In other terms, all pairs are of classes are composed of classes subsumed by the term GO:0008150
 
-##### Gene products comparison
+The samples can be found at: resources/data/go/benchmarks
+
+We selected Lin Information Content based  (IC-based) measure to evaluate the performance of the tools.
+Lin is a commonly used measures to compare two concepts/terms defined in an ontology.
+It requires the Most Informative Common Ancestor of the compared terms and (by default) Resnik IC to be computed.
+This two treatments are the most time consuming of all IC-based measures (e.g. Resnik, Lin, SimRel) and IC-based measures are the most commonly used measures. 
+
+The script which is used to perform the test can be found at /scripts/go/GO_T2T.sh 
+
+##### Constraint
+We set two constraints:
+- memory consumption : processes cannot use more than 4Go memory
+- Time constraint : processes cannot take more than two hours
+
+If those constraints are not respected the execution is stopped.
+
+
+##### Results
+
+###### Observations
+
+* FastSemSim produces a large number of values set to None, which cannot be exploited by other algorithms.
+This is not an error in the test. This is due to the way FastSemSim computes Resnik Information Content.
+Reminds IC(term1) = -log(p(term1)) with p(term1) the probability term1 is used in the annotation repository.
+Considering that some terms (e.g. (terminal terms) are not used in the repository, the probability they occur is nil and their IC is set to infinity.
+By applying a strict implementation FastSemSim refuse to process those pairs and is therefore limiting to compute pairwise similarity measures (not that the IC cannot be changed).
+Refers to the class TermSemSim method int_validate_single_term of the module TermSemSim  (if self.util.IC[term] == None: return None). 
+Not also that this is not a problem for Gene to Gene comparisons as all pairwise computations involve terms which have been used by at least one gene. 
+
+* Due to their performance GOSim and GOSemSim have been excluded from the large tests
+
+#### Test 2: Gene products comparison
 
 This test aims at comparing the tools in computing similarity between gene products annotated by genes defined in the Gene Ontology.
 Four tests have been designed. 
@@ -103,17 +145,16 @@ Each test is composed of a set of gene product for which we want the semantic si
 * 1M pairs of terms
 * 100M pairs of terms
 
+
+
 The sets of pairs of terms have been generated using the source code available at: 
 TODO
 
-see the section dedicated to tools for more information such as tool versions.
 
 
+### Disease Ontology
 
-
-#### Disease Ontology
-
-##### Tools compared 
+#### Tools compared 
 * SML
 * DOSim
 
