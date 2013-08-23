@@ -1,0 +1,48 @@
+<sglib>
+	<opt  threads = "1"  />
+
+	<namespaces>
+		<nm prefix="GO" ref="http://purl.org/obo/owl/GO#GO_" />
+	</namespaces>
+
+	<graphs>    
+		<graph uri="http://bio/"  >    
+			<data>
+				<file format="RDF_XML"   path="../../resources/data/go/onto/go_20130302-termdb.owl"/>    
+				<file format="TSV_ANNOT"   path="../../resources/data/go/annot/dump_orgHsegGO_sml.tsv" prefixSubject="http://bio/geneid/" header="false"/>    
+			</data>
+
+			<actions>
+				<action type="VERTICES_REDUCTION" root_uri="http://purl.org/obo/owl/GO#GO_0008150" />
+				<action type="TRANSITIVE_REDUCTION" target="CLASSES" />
+				<action type="TRANSITIVE_REDUCTION" target="INSTANCES" />
+			</actions>
+		</graph>    
+	</graphs>
+
+	<sml module="sm" graph="http://bio/" >
+
+		<opt_module threads="1" 	quiet = "true"
+/>
+
+
+		<ics>
+			<ic id   = "resnik" flag = "IC_ANNOT_RESNIK_1995"  />
+		</ics>
+
+		<measures type = "pairwise">
+			<measure   id   = "resnik" flag = "SIM_PAIRWISE_DAG_NODE_RESNIK_1995"  ic = "resnik"  />
+		</measures>
+
+		<queries id= "query" 
+			type    = "cTOc" 
+			file    = "../../resources/data/go/benchmarks/benchmark_1000000_2.tsv" 
+			output  = "/tmp/r_100K_fss_2.tsv" 
+			noAnnots = "set=-1"
+			notFound = "exclude"
+			use_uri_prefix = "true"
+			output_basename = "true" 
+			use_uri_prefix_output = "true"
+		/>
+	</sml>
+</sglib>

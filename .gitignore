@@ -1,3 +1,3 @@
-data/*
-!data/test/*
+resources/data/*
+!resources/data/test/*
 

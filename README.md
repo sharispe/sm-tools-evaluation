@@ -59,7 +59,17 @@ Downloads:
 * go_20130302-termdb.obo-xml.gz	3.7 MB	3/4/13 10:35:00 AM
 * go_20130302-termdb.rdf-xml.gz	3.7 MB	3/4/13 10:35:00 AM
 
-##### Input Query 
+from ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
+
+##### Annotation Version
+
+GOSim and GOSemSim rely on the annotations defined in the R package org.Hs.eg.GO.
+FastSemSim and the SML rely on GAF or plain annotations files.
+In order to ensure that the annotations used for the evaluation are the same, we created a dump of org.Hs.eg.GO using the R script named dump_orgHsegGO.R.
+see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/org.Hs.eg.db/man/org.Hs.eg.db.pdf for more information on org.Hs.eg.GO
+
+The format required for the SML to import TSV file is sligthly different, the conversion is made using the script changeDumpAnnotationTSVFormat.py
+
 
 ##### Term to Term computations
 
@@ -67,13 +77,20 @@ This test aims at comparing the tools in computing similarity between terms defi
 Four tests have been designed. 
 Each test is composed of a set of pairs of terms for which we want the semantic similarity to be computed:
 
+* 1k pairs of terms
 * 10k pairs of terms
-* 100k pairs of terms
 * 1M pairs of terms
 * 100M pairs of terms
 
-The sets of pairs of terms have been generated using the source code available at: 
-TODO
+The sets of pairs of terms have been generated using the Java class BenchmarkBuilder_GO_TermToTerm?
+
+BenchmarkBuilder_GO_TermToTerm is used to generate benchmarks composed of pairs of GO terms. 
+It has been used to generate TSV files containing pairs of GO terms identifiers (one per line). 
+Four sizes of benchmarks are considered (1K, 10K, 1M and 100M). 
+For each size, three sets of pairs are generated.
+
+The benchmarks are built selecting random pairs of terms specified in the Biological Process aspect of the GO. 
+In other terms, all pairs are of classes are composed of classes subsumed by GO:0008150
 
 ##### Gene products comparison
 
