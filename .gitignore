@@ -1,3 +1,5 @@
 resources/data/*
 !resources/data/test/*
+.RData
+?Rhistory
 
