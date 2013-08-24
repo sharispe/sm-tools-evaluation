@@ -1,28 +1,64 @@
 Evaluation of Software for Semantic Measures
 ==============================================================
 
-This project aims at comparing tools dedicated to semantic measures computation.
-It has been initiated in order to evaluated the Semantic Measures Library (http://www.semantic-measures-library.org/), see the competing interest section for more information. 
-In addition, the project currently focuses on graph-based semantic measures and do not evaluate tools related to distributional semantic measures.
+This project aims at comparing tools dedicated to semantic measures computation (software, source code libraries).
+It has been initiated in order to evaluated the Semantic Measures Library and corresponding Toolkit (http://www.semantic-measures-library.org/), see the competing interest section for more information.
+It however doesn't focus on the Semantic Measures Library and includes comparison of several tools which can therefore be useful for (i) end-users who want to select a tool to compute semantic measures, (ii) developers who want to compare their tools.
 
-The project contains the source code and details regarding the materials and methods used in the evaluations.
-Results and discussions are currently provided at http://www.semantic-measures-library.org/index.php?q=performance
+The project currently focuses on graph-based semantic measures, e.g. measures aiming to assess the similarity of class/concepts/terms defined in an ontology.
+As an example, this project do not evaluate tools related to distributional semantic measures.
+In addition, a critical aspect is that this project do not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be used to compare tools.
+Keep in mind that tools which do not perform well on the tests we defined may have other benefits not discussed in this evaluation.
+Please contact us or fork this repository to help us improve it.
 
-> Do not hesitate to help us improve the benchmark and to upgrade the tests with new tools or new versions of considered tools.
+This evaluation doesn't pretend to cover all aspects which could be useful to discuss in order to evaluate software.
+We here focus on objective metrics and mainly aim at evaluating the speed of the program given specific resource constraints (memory, computational time).
+We only provide tests and results which are strictly reproducible given the source code and information shared through this project.
+We do not discuss aspects relative to the (subjective) individual user experience or other important aspects such as documentation and code quality, usability, overall sustainability, community support, release updates...
+Please refer to corresponding tools to evaluate those aspects.
+More information related to software evaluation can be found at http://www.software.ac.uk/software-evaluation-guide and http://software.ac.uk/sites/default/files/SSI-SoftwareEvaluationCriteria.pdf
+ (credit to the Software Sustainability Group and more particularly to the authors Mike Jackson, Steve Crouch and Rob Baxter).
 
-We propose:
+The source code and details regarding the materials and methods used in the evaluations are defined herein.
+However, due to github constraints considering file sizes, some datasets cannot be included in this community project ; they are made available through other websites. 
+Only raw results are provided on this project.
+A more detailed (but subjective) discussion of the results is currently provided at http://www.semantic-measures-library.org/index.php?q=performance
 
-1. Domain-specific evaluations. Numerous library and tools have been developed for domain-specific use cases (e.g. ontologies). 
-Considering specific domain of use, we compare the tools in terms of performance and regarding other criteria such as dependencies, difficulty to use...
+> Do not hesitate to help us improve the benchmark and to upgrade the tests with new tools or new versions of considered tools. 
+> The issue tracker can be used to discuss any problems regarding the source code or the test protocols.
+> You can also fork the project to (i) add new tools or upgrade existing tools or datasets, (ii) add new tests, (iii) fix bugs or improve the source code.
+> We will next incorporate your change to this project.
+
+We currently propose Domain-specific evaluations. Indeed, numerous library and tools have been developed for domain-specific use cases (e.g. ontologies). 
+Considering specific domain of use, we compare the tools regarding their speed performance and their capacity to handle large datasets.
+
+The domain for which test are available are:
 
  * Molecular Biology and Biomedicine
    * Gene Ontology
-   * Disease Ontology
- * WordNet
+
+<!--- 
+
+ Add tests relative to 
+ Disease Ontology 
+ WordNet 
+
+-->
+
+How to Reproduce Tests and Results
+--------------
+The source code is developed in order to be executed on any 64-Bit Linux operating system considering software dependencies to be installed (e.g. Python, Java, R - refer to evaluated tools).
+I personally used the easy-to-used Ubuntu distribution (LTS 12.04) but other distributions can be used.
+Windows users can deploy a virtual machine to reproduce the tests, fork the repository and follow the instructions. 
+Please, start a discussion if you encounter any problems.
+
+> Note that results may vary considering your hardware configuration but rankings must be the same.
 
 
 Molecular Biology and Biomedicine
 --------------
+
+This section contains all tests relative to computation of semantic measures scores for Molecular Biology and Biomedicine studies.
 
 ### Gene Ontology
 
@@ -33,13 +69,13 @@ Two series of tests have been performed:
 In all the tests we consider that:
 * No restriction is applied on the Evidence Code associated to the annotations linked to gene product (e.g., IEA annotations are considered)
 
-The datasets relative to this test are available at */go e.g. scripts/go
+The datasets relative to this test are available at `*/go` e.g. `scripts/go`
 
-#### Tools compared 
+#### Tools Compared 
 
 See the section dedicated to tools for more information (tool versions).
-
-* SML
+We currently compare:
+* Semantic Measures Library Toolkit (SML)
 * GOSim
 * GOSemSim
 * FastSemSim
@@ -48,34 +84,38 @@ See the section dedicated to tools for more information (tool versions).
 
 #### Dataset
 
-The Dataset associated to this test is contained in the directory /data/go  
-(please download the dataset from LINK_TO_THE_DATASET)
+The dataset associated to this test is contained in the directory /data/go  
+(please download the dataset from TODO: ADD LINK_TO_THE_DATASET)
 
 ##### Gene Ontology
 
-The version of the Gene Ontology used for this test is the lite version of 2013 03 02 (which can be downloaded at ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/)
+The version of the Gene Ontology used for this test is the lite version of 2013 03 02 (contained in the dataset but can also be downloaded at ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/)
 
-GOSim & GoSemSim depends on the GO.db package proposed by Bioconductor and are therefore constrained to be used with the version associated to Bioconductor. The version of Bioiconductor which has been used in this test is version 2.12 see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/GO.db/man/GO.db.pdf for details regarding the information relative to the GO loaded in Bioconductor 2.12.
+GOSim & GoSemSim depends on the GO.db package proposed by Bioconductor and are therefore constrained to be used with the version associated to Bioconductor. 
+The version of Bioiconductor which has been used in this test is version see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/GO.db/man/GO.db.pdf for details regarding the information relative to the GO loaded in Bioconductor 2.12.
 
-FastSemSim loads any GO specified in OBO-XML and the SML is able to load the OWL and RDF-XML and OBO formatted versions.
+FastSemSim loads any GO specified in OBO-XML and the SML is able to load the OWL/RDF-XML and OBO formatted versions.
 
-Downloads (ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/):
 The file which have been used for this tests are
 * go_20130302-termdb.obo-xml.gz	3.7 MB	3/4/13 10:35:00 AM
 * go_20130302-termdb.owl.gz	3.7 MB	3/4/13 10:35:00 AM
 
-They can be found in the directory /data/go/onto
-
+They can be found in the directory `/data/go/onto` or at ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
 ##### Annotations
 
-GOSim and GOSemSim rely on the annotations defined in the R package org.Hs.eg.GO.
+GOSim and GOSemSim rely on the GO annotations defined in the R package org.Hs.eg.GO.
+See http://www.bioconductor.org/packages/2.12/data/annotation/manuals/org.Hs.eg.db/man/org.Hs.eg.db.pdf for more information on the version of the annotations used. 
+
 FastSemSim and the SML rely on GAF or plain annotations files.
-In order to ensure that the annotations used for the evaluation are the same, we created a dump of org.Hs.eg.GO using the R script named dump_orgHsegGO.R. (/scripts/go/)
-see http://www.bioconductor.org/packages/2.12/data/annotation/manuals/org.Hs.eg.db/man/org.Hs.eg.db.pdf for more information on the version of the annotations used. 
+We encountered difficulties to download GAF file associated to the annotations corresponding to the one loaded in the R package on which rely GOSim and GOSemSim.
+In order to ensure that the annotations used for the evaluation are the same, we created a dump of org.Hs.eg.GO using the R script named dump_orgHsegGO.R. (`/scripts/go/`).
+This script generates a TSV file containing the GO annotation for all human genes.
 
-The format required for the SML to import TSV file is sligthly different, the conversion is made using the script changeDumpAnnotationTSVFormat.py
 
-The annotation dump can be found at /resources/data/go/annot:
+The format required for the SML to import TSV file is slightly different from the one used by FastSemSim.
+The conversion of the dump generated by the R script has been made using the script changeDumpAnnotationTSVFormat.py (`/scripts/go/`)
+
+The annotation dumps used in the tests can be found at `/resources/data/go/annot`:
 * dump_orgHsegGO.tsv
 * dump_orgHsegGO_sml.tsv
 
@@ -90,35 +130,71 @@ Each test is composed of a set of pairs of terms for which we want the semantic 
 * 1M pairs of terms
 * 100M pairs of terms
 
-For each test, 3 samples have been generated in order to reduce the probability the evaluation of the performance is biased by abnormal sampling.
+For each test of size X, 3 random samples of size x have been generated in order to reduce the probability the evaluation of the performance is biased by abnormal sampling.
 As an example the test composed of 1K pairs of terms is composed of three different samples r1, r2, r3.
-Moreover for each sample (e.g. r1), three runs (r1.0, r1.1, r1.2) have been performed, to reduce the probability results are biased by abnormal operating system behavior or material lags.
+For each sample (e.g. r1), three runs (r1.0, r1.1, r1.2) have been performed.
+This is to reduce the probability results are biased by abnormal operating system behavior or material lags.
 
-The sets of pairs of terms composing the 3 samples of each test have been generated using the Java class BenchmarkBuilder_GO_TermToTerm
+The sets of pairs of terms composing the 3 samples of each test have been generated using the tool `sml-tools-evaluation-generate-go-benchmarks.jar`
+```
+java -jar sml-tools-evaluation-generate-go-benchmarks.jar ../../resources/data/go/onto/go_20130302-termdb.owl ../../resources/data/go/annot/dump_orgHsegGO_sml.tsv ../../resources/data/go/benchmarks/
+```
+Both the tool and the source code can be found at `scripts/go/`.
 
-BenchmarkBuilder_GO_TermToTerm is used to generate benchmarks composed of pairs of GO terms. 
+This tool is used to generate benchmarks composed of pairs of GO terms. 
 It has been used to generate TSV files containing pairs of GO terms identifiers (one per line). 
 Four sizes of benchmarks are considered (1K, 10K, 1M and 100M). 
 As we said, for each size, three sets of pairs are generated.
-The benchmarks are built selecting random pairs of terms specified in the Biological Process aspect of the GO. 
-In other terms, all pairs are of classes are composed of classes subsumed by the term GO:0008150
+The benchmarks are built selecting random pairs of terms specified in the Biological Process aspect of the GO 
+(all pairs are of terms are composed of terms subsumed by the term GO:0008150).
+In addition, all terms which appear in the test are at least used to annotate a gene defined in dump_orgHsegGO.tsv.
+Indeed some library cannot compute the similarity of terms which are not used to annotated to annotate at least one gene (This is due to the computation of Resnik Information Content). 
 
-The samples can be found at: resources/data/go/benchmarks
+The samples used for the tests can be found at: `resources/data/go/benchmarks`
 
 We selected Lin Information Content based  (IC-based) measure to evaluate the performance of the tools.
 Lin is a commonly used measures to compare two concepts/terms defined in an ontology.
 It requires the Most Informative Common Ancestor of the compared terms and (by default) Resnik IC to be computed.
 This two treatments are the most time consuming of all IC-based measures (e.g. Resnik, Lin, SimRel) and IC-based measures are the most commonly used measures. 
 
-The script which is used to perform the test can be found at /scripts/go/GO_T2T.sh 
-
-##### Constraint
-We set two constraints:
-- memory consumption : processes cannot use more than 4Go memory
+The script which is used to perform the test can be found at `/scripts/go/GO_T2T.sh`.
+This script is used to launch the tests considering the tools have been installed and the dataset downloaded.
+If you try to reproduce the results, please edit the variable at the beginning of the script (e.g. installation and output directory).
+The script also specifies two constraints you can be modified editing the script.
+This must be require depending on your hardware configuration.
+The constraint we consider are:
+- memory consumption : processes cannot use more than 6Go memory
 - Time constraint : processes cannot take more than two hours
 
 If those constraints are not respected the execution is stopped.
 
+> Due to their performance GOSim and GOSemSim are not considered for the large tests.
+> This can be modified modifying the script GO_T2T.sh.
+
+TODO: Discuss the wrapper GOSim & GOSemSim
+
+##### Perform the Test
+
+Execute the script (see above for details regarding the script).
+We consider `/tmp/output_go_benchmark.log` as our log file.
+```
+./scripts/go/GO_T2T.sh 2>&1 | tee /tmp/output_go_benchmark.log
+```
+This can take several hours depending on the constraints you specified and the hardware configuration.
+The script execution can be consulted using:
+```
+grep "\*\|user\|real" /tmp/output_go_benchmark.log  
+```
+
+To extract the information relative to execution time and to store it into `/tmp/output_go_benchmark.log.reduce`
+grep "\*\|user\|real" /tmp/output_go_benchmark.log  > /tmp/output_go_benchmark.log.reduce
+
+The results are next processed by the python script `scripts/go/process_results.py` which computes the average values and associated standard deviation.
+```
+scripts/go/process_results.py /tmp/output_go_benchmark.log.reduce
+```
+
+We manually formatted the table on the plots.
 
 ##### Results
 
@@ -133,6 +209,10 @@ Refers to the class TermSemSim method int_validate_single_term of the module Ter
 Not also that this is not a problem for Gene to Gene comparisons as all pairwise computations involve terms which have been used by at least one gene. 
 
 * Due to their performance GOSim and GOSemSim have been excluded from the large tests
+
+* GOSim and GOSemSim precompute the IC and can be used to handle large quantity of annotations. 
+Indeed loading all UniprotKB annotation using FastSemSim or the SML is currently not possible.
+Those two solutions use in-memory
 
 #### Test 2: Gene products comparison
 
@@ -150,7 +230,7 @@ Each test is composed of a set of gene product for which we want the semantic si
 The sets of pairs of terms have been generated using the source code available at: 
 TODO
 
-
+<!---
 
 ### Disease Ontology
 
@@ -160,16 +240,34 @@ TODO
 
 see the section dedicated to tools for more information such as tool versions.
 
+-->
 
 List of Tools
 --------------
 
 This listing contains the tools which have been included in the evaluation.
-The tools are available at ``./resources/tools`` (Please refer to the corresponding documentation for the installation)
+The tools are available at `./resources/tools` (Please refer to the corresponding documentation for the installation)
 
-#### Semantic Measures Library 
+#### Semantic Measures Library (and Toolkit)
+
 url: http://www.semantic-measures-library.com
+
 version: 0.6
+
+##### Dependencies
+
+Java 1.7.
+In the tests we used:
+```
+java -version
+java version "1.7.0_21"
+Java(TM) SE Runtime Environment (build 1.7.0_21-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 23.21-b01, mixed mode)
+```
+
+##### Installation
+
+None. The SML-Toolkit is ready to use
 
 #### GOSim
 
@@ -177,19 +275,30 @@ url: http://cran.r-project.org/src/contrib/Archive/GOSim/
 
 version: 1.2.7.7
 
+##### Dependencies
+
+In the tests we used:
+```
+R --version
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+```
+
+Upgrade R version if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
+
+
 ##### Installation
 
-We used R version 3.0.1
-Upgrade R version if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
 
 In R console:
 
 First install dependencies, they are specified when you try to install the software
 
-`source("http://bioconductor.org/biocLite.R")`
-
-`biocLite(c("annotate", "topGO", ...))`
-
+```
+source("http://bioconductor.org/biocLite.R")
+biocLite(c("annotate", "topGO", ...))
+```
 
 Next install the corresponding package (change the location of the package)
 `install.packages(".../GOSim_1.2.7.7.tar.gz", repos = NULL, type ="source")`
@@ -200,20 +309,32 @@ url: http://www.bioconductor.org/packages/release/bioc/html/GOSemSim.html
 
 version:  1.18.0
 
+
+##### Dependencies
+
+In the tests we used:
+```
+R --version
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+```
+
+Upgrade R version if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
+
+
 ##### Installation
 
-We used R version 3.0.1
-Upgrade R version if required (Ubuntu users: http://cran.cnr.berkeley.edu/bin/linux/ubuntu/)
 
 In R console:
 
 First install dependencies, they are specified when you try to install the software
 
-`install.packages(c("Rcpp","igraph","flexmix", "RBGL", "graph", "corpcor", "org.Hs.eg.db"))`
-
-`source("http://bioconductor.org/biocLite.R")`
-
-`biocLite(c("GO.db", "AnnotationDbi", "annotate", "topGO"))`
+```
+install.packages(c("Rcpp","igraph","flexmix", "RBGL", "graph", "corpcor", "org.Hs.eg.db"))
+source("http://bioconductor.org/biocLite.R")
+biocLite(c("GO.db", "AnnotationDbi", "annotate", "topGO"))
+```
 
 Next install the corresponding package (change the location of the package)
 `install.packages(".../GOSemSim_1.18.0.tar.gz", repos = NULL, type ="source")`
@@ -224,6 +345,14 @@ url: http://sourceforge.net/projects/fastsemsim/
 
 version: 0.7.1
 
+##### Dependencies
+
+We used:
+```
+python --version
+Python 2.7.3
+```
+
 ##### Installation
 
 Considering Python is already installed
@@ -232,16 +361,19 @@ Unzip the archive
 
 as Root ./install.sh
 
+<!---
+
 #### DOSim
 
 url: ?
 version: ?
 
- 
+--> 
+
 Competing interests
 --------------------
 
 This project has been initiated in order to evaluate the Semantic Measures Library SML.
 As the developers of these tests are also developers of the SML we cannot ensure that this evaluation is free from bias.
-Indeed we better know how to configure and use the SML than other tools. Do not hesitate to help us improve those tests.
+Indeed we better know how to configure and use the SML than other tools. Do not hesitate to help us improve those tests !
 

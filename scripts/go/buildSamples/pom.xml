@@ -1,0 +1,178 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>slib</artifactId>
+        <groupId>fr.lgi2p.kid</groupId>
+        <version>0.7-beta</version>
+        <relativePath>..</relativePath>
+    </parent>
+    <artifactId>slib-quicktest</artifactId>
+
+    <repositories>
+        <repository>
+            <id>lucene-repository</id>
+            <name>Lucene Maven</name>
+            <url>https://repository.apache.org/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        
+        <repository>
+            <id>bionlp-sourceforge</id>
+            <url>http://bionlp.svn.sourceforge.net/viewvc/bionlp/repo/</url>
+        </repository>
+        
+
+        <repository>
+            <id>mapdb-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+
+
+    </repositories>
+
+    <dependencies>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- concrete Log4J Implementation for SLF4J API -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.lgi2p.kid</groupId>
+            <artifactId>slib-utils</artifactId>
+            <version>0.7-beta</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.lgi2p.kid</groupId>
+            <artifactId>sglib-model-impl</artifactId>
+            <version>0.7-beta</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.lgi2p.kid</groupId>
+            <artifactId>slib-indexer</artifactId>
+            <version>0.7-beta</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.lgi2p.kid</groupId>
+            <artifactId>sglib-algo</artifactId>
+            <version>0.7-beta</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.lgi2p.kid</groupId>
+            <artifactId>sglib-io</artifactId>
+            <version>0.7-beta</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.lgi2p.kid</groupId>
+            <artifactId>slib-sml</artifactId>
+            <version>0.7-beta</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.lgi2p.kid</groupId>
+            <artifactId>slib-tools-sml-toolkit</artifactId>
+            <version>0.7-beta</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.swinglabs</groupId>
+            <artifactId>swingx-core</artifactId>
+            <version>1.6.2-2</version>
+        </dependency>
+        <dependency>
+            <groupId>jgoodies</groupId>
+            <artifactId>forms</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+            
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>3.5.0</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>edu.ucdenver.ccp</groupId>
+            <artifactId>biolemmatizer-core</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.ucdenver.ccp</groupId>
+            <artifactId>biolemmatizer-uima</artifactId>
+            <version>1.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.0</version>
+        </dependency>
+        
+        <!--        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.2</version>
+        </dependency>
+
+    </dependencies>
+    
+    <build>
+        <finalName>generateBenchmark-${maven.build.timestamp}-lib</finalName>
+
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+
+                <configuration>
+                    <finalName>generateBenchmark-${maven.build.timestamp}</finalName>
+                    <appendAssemblyId>true</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>comparison_measures.GenerateBenchMark</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly-generateBenchmarkJar</id>
+                        <phase>package</phase><!-- append to the packaging phase. -->
+                        <goals>
+                            <goal>attached</goal><!-- goals == mojos -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+        </plugins>
+
+    </build>
+
+
+</project>
