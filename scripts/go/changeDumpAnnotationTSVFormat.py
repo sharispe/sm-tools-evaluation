@@ -14,7 +14,9 @@ print "infile="+infile
 f = open(outfile,'w')
 for line in open(infile,'r'):
     data = line.strip().split("\t")
-    f.write(data.pop(0)+"\t"+(';'.join(["GO:GO_"+x.split(":")[1] for x in data]))+"\n")
+    
+    #f.write(data.pop(0)+"\t"+(';'.join(["GO:GO_"+x.split(":")[1] for x in data]))+"\n")
+    f.write(data.pop(0)+"\t"+(';'.join(data))+"\n")
 f.close()
 
 print "outfile="+outfile

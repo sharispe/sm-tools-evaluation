@@ -8,7 +8,7 @@ if(length(args) != 3){
 	cat("Script used to compute semantic measures scores using GOSim library\n")
 	cat("USAGE: \n")
 	cat("  [0] Input file, TSV one entry per line\n")
-	cat("  [1] Type of Test T2T or GP2GP for Term to Term and Gene Product to Gene Product comparisons respectively, T2T are computed using Lin Measure, GP2GP are computed using Lin + Max aggregation \n")
+	cat("  [1] Type of Test T2T or G2G for Term to Term and Gene Product to Gene Product comparisons respectively, T2T are computed using Lin Measure, G2G are computed using Lin + Max aggregation \n")
 	cat("  [2] output file\n")
 	quit()
 }
@@ -24,8 +24,8 @@ cat("INPUT: ",input,"\n")
 cat("TYPE : ",testType,"\n")
 cat("OUTPUT: ",output,"\n")
 
-if(testType != "T2T" && testType != "GP2GP"){
-	cat("Please select Term to Term comparison (T2T) or Gene Product To Gene Product Comparison (GP2GP)")
+if(testType != "T2T" && testType != "G2G"){
+	cat("Please select Term to Term comparison (T2T) or Gene Product To Gene Product Comparison (G2G)")
 	quit()
 }
 

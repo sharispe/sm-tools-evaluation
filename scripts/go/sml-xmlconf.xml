@@ -1,5 +1,5 @@
 <sglib>
-	<opt  threads = "1"  />
+	<opt  threads = "4"  />
 
 	<namespaces>
 		<nm prefix="GO" ref="http://purl.org/obo/owl/GO#GO_" />
@@ -22,7 +22,7 @@
 
 	<sml module="sm" graph="http://bio/" >
 
-		<opt_module threads="1" 	quiet = "true"
+		<opt_module threads="4" 	quiet = "true"
 />
 
 
@@ -37,7 +37,7 @@
 		<queries id= "query" 
 			type    = "cTOc" 
 			file    = "/home/seb/dev/java/workspace/sml-tools-evaluation/resources/data/go/benchmarks/benchmark_pairwise_1000_2.tsv" 
-			output  = "/tmp/sml-tools-evaluation/go/r_1000_SML_2_2.tsv" 
+			output  = "/tmp/sml-tools-evaluation/go/r_1000_SML_parallel_2_2.tsv" 
 			noAnnots = "set=-1"
 			notFound = "exclude"
 			use_uri_prefix = "true"

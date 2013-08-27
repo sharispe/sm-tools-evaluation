@@ -101,6 +101,12 @@ The file which have been used for this tests are
 * go_20130302-termdb.owl.gz	3.7 MB	3/4/13 10:35:00 AM
 
 They can be found in the directory `/data/go/onto` or at ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
+
+Note also that we converted the obo.xml format to obo using  go-perl package http://search.cpan.org/~cmungall/go-perl/
+`./scripts/go2fmt.pl -w obo OBO_XML_FILE > OBO_FILE `.
+The OBO file has been saved under the name `go_20130302-termdb.obo`.
+The `hold_over_chain` tags of typedefs have been commented as go-perl doesn't support them.
+
 ##### Annotations
 
 GOSim and GOSemSim rely on the GO annotations defined in the R package org.Hs.eg.GO.
@@ -157,7 +163,7 @@ Lin is a commonly used measures to compare two concepts/terms defined in an onto
 It requires the Most Informative Common Ancestor of the compared terms and (by default) Resnik IC to be computed.
 This two treatments are the most time consuming of all IC-based measures (e.g. Resnik, Lin, SimRel) and IC-based measures are the most commonly used measures. 
 
-The script which is used to perform the test can be found at `/scripts/go/GO_T2T.sh`.
+The script which is used to perform the test can be found at `/scripts/go/run.sh`.
 This script is used to launch the tests considering the tools have been installed and the dataset downloaded.
 If you try to reproduce the results, please edit the variable at the beginning of the script (e.g. installation and output directory).
 The script also specifies two constraints you can be modified editing the script.
@@ -169,16 +175,19 @@ The constraint we consider are:
 If those constraints are not respected the execution is stopped.
 
 > Due to their performance GOSim and GOSemSim are not considered for the large tests.
-> This can be modified modifying the script GO_T2T.sh.
+> This can be modified modifying the script run.sh.
 
-TODO: Discuss the wrapper GOSim & GOSemSim
+GOSim and GOSemSim do not have command line interfaces.
+We therefore developed two simple scripts which can be used to compute all the similarities for the pairs of entries contained in a file.
+See `scripts/go/GOSimWrapper.R` and `scripts/go/GOSemSimWrapper.R`.
+
 
 ##### Perform the Test
 
 Execute the script (see above for details regarding the script).
 We consider `/tmp/output_go_benchmark.log` as our log file.
 ```
-./scripts/go/GO_T2T.sh 2>&1 | tee /tmp/output_go_benchmark.log
+./scripts/go/run.sh 2>&1 | tee /tmp/output_go_benchmark.log
 ```
 This can take several hours depending on the constraints you specified and the hardware configuration.
 The script execution can be consulted using:
@@ -197,6 +206,79 @@ scripts/go/process_results.py /tmp/output_go_benchmark.log.reduce
 We manually formatted the table on the plots.
 
 ##### Results
+
+> The tests have been performed on a Intel(R) Core(TM) i5 CPU M 560 @ 2.67GHz with 6Go allocated to the tools.
+
+The detailed results for each run can be consulted at `results/go/benchmark_result_pairwise.ods`.
+Below the digested results.
+'X' means that the tests have not be performed (due to the performance of the tools).
+'!' means that the constraints have been reached and that the computation failed. 
+SML Par(4) corresponds to the SML configured with 4 threads (add `-threads 4` to the classical SML command line).
+
+|          	 |  1K        | 10K        |  1M           | 100M           |  
+| -------  	 |:----------:| :---------:|:-------------:|:--------------:|
+| FastSemSim | 0m12.3	  | 0m12.83    |  0m31.68      | ! > 6Go memory |
+| SML        | **0m9.23** | **0m9.76** |  **0m19.55**  | **16m30.24**   |
+| SML Par(4) | 0m9.22     | 0m9.56     |  0m14.47      | 8m58.29        |
+| GOSim    	 | 0m49.46    | 3m21.5     |   X           |  X             |
+| GOSemSim 	 | 1m34.69    | 16m21.34   |   X           |  X             |
+
+###### Correlations
+
+We evaluated the Pearson correlations between the results obtained by the various libraries considering Lin measure.
+The correlations have been computed taking term to term 10000 r_0_0 sample into consideration.
+The details can be found in results/go/correlations_tools_r0_0.ods
+
+Acronyms:
+* FSS: FastSemSim
+* FSS ISA: FastSemSim only considering is a relationships (see remark above)
+* SML: Semantic Measures Library
+* GOSim
+* GOSemSim
+
+FSS ISA corresponds to the results obtained using a special build of the FastSemSim library, version 0.7.1.1 (see `resources/tools/`).
+This version is not an official release supported by Marco Mina. 
+This build has been made in order to change an undesired behavior relative to the way version 0.7.1 compute parents/ancestors.
+Indeed version 7.1 considers all types of relationship as isa/rdfs:subClassOf relationship when parents are computed.
+This behavior changes results such as common ancestors and or the computation of the Most Informative Common Ancestor of two terms.
+The results of this version for sample r0_0 can be found at `results/go/r_10000_FastSemSim_7.1.1_0_0.tsv` (then can also be reproduced modifying run.sh script).
+
+GOSim and GOSemSim relies on GO.db R package http://www.bioconductor.org/packages/2.12/data/annotation/html/GO.db.html
+They also considers as ancestors of a concept x, concept which are not subsuming x according to is-a relationships.
+See http://www.bioconductor.org/packages/2.13/data/annotation/manuals/GO.db/man/GO.db.pdf:
+GOBPPARENTS details: 
+"Each GO BP term is mapped to a named vector of GO BP terms. 
+The name associated with the parent term will be either isa, hasa or partof, 
+where isa indicates that the child term is a more speciﬁc version of the parent, 
+and hasa and partof indicate that the child term is a part of the parent. 
+For example, a telomere is part of a chromosome."
+
+|          | FSS    | FSS ISA |  SML     | GOSIM | GOSEMSIM |
+| -------  |:------:| :------:|:--------:|:-----:|:--------:|
+| FSS      | 1	    | 0.68    |  0.69    | 0.85  | 0.86     |
+| FSS ISA  |        | 1       | **0.99** | 0.58  | 0.58     |
+| SML      |        |         |  1       | 0.57  | 0.58     |
+| GOSim    |        |         |          | 1     | 0.99     |
+| GOSim    |        |         |          |       | 1        |
+
+We observe that GOSIM and GOSemSim have a maximal Pearson correlation (0.99).
+Both tools rely on GO.db package. 
+They also both have a strong correlation with FSS (0.85).
+The difference can be explained by the way the tools compute the information content.
+
+The SML however produces scores which are faintly correlated to FSS, GOSim and GOSemSim.
+We investigated the results to understand which are the causes of the differences.
+We found that FSS, GOSim and GOSemSim perform treatments which are not in accordance with the original definition of Information Content based measures.
+Indeed, those measures clearly rely on the taxonomic graph in order to be computed.
+The taxonomic graph is the subgraph of the ontology which only contains isa relationships (rdfs:subClassOf).
+This graph is considered to compute the ancestors of a terms and is therefore important to compute the Most Informative Common Ancestor (or Disjoint Common Ancestors) in Information Content based measures.
+FastSemSim, GOSim and GOSemSim do not consider only taxonomic relationships to compute the ancestors, which explain the variation obtained.
+They also consider part-of relationships (or even regulates in FSS) to define ancestors. 
+To ensure that the poor correlations were due to this difference, we created a modified version the FastSemSim library (see build 0.7.1.1 in `/resources/tools`).
+This version can be used to compute the similarities using FSS source code, only considering isa relationships when ancestors are computed.
+Considering this modification we obtained the expected corelation (0.98).
+
+> Most of result variations can be explained by differences between the various interpretations and implementations of measures proposed by the libraries.
 
 ###### Observations
 
