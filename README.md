@@ -20,7 +20,7 @@ The domain for which test are available are:
  * Molecular Biology and Biomedicine
    * Gene Ontology
 
-**Important**: this project do not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be used to compare tools.
+** Important **: this project do not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be used to compare tools.
 Keep in mind that tools which do not perform well on the tests we defined may have other benefits not discussed in this evaluation.
 Please contact us or fork this repository to help us improve it.
 In addition, this evaluation doesn't pretend to cover all aspects which could be useful to discuss in order to evaluate software.
@@ -63,12 +63,12 @@ Please, start a discussion if you encounter any problems.
 
 > Note that results may vary considering your hardware configuration but rankings must be the same.
 
-Molecular Biology and Biomedicine
+<a id="section_molecular_biology"></a> Molecular Biology and Biomedicine
 --------------
 
 This section contains all tests relative to computation of semantic measures scores for Molecular Biology and Biomedicine studies.
 
-### Gene Ontology
+### <a id="subsection_gene_ontology"></a> Gene Ontology
 
 > The Gene Ontology, or GO, is a major bioinformatics initiative to unify the representation of gene and gene product attributes across all species.More specifically, the GO aims to:
 > * Maintain and develop its controlled vocabulary of gene and gene product attributes;
