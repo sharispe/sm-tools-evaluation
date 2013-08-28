@@ -17,10 +17,10 @@ Considering specific domain of use, we compare the tools regarding their speed p
 
 The domain for which test are available are:
 
- * Molecular Biology and Biomedicine
-   * Gene Ontology
+ * [Molecular Biology and Biomedicine](#section_molecular_biology)
+   * [Gene Ontology](#subsection_gene_ontology)
 
-** Important **: this project do not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be used to compare tools.
+**Important**: this project do not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be used to compare tools.
 Keep in mind that tools which do not perform well on the tests we defined may have other benefits not discussed in this evaluation.
 Please contact us or fork this repository to help us improve it.
 In addition, this evaluation doesn't pretend to cover all aspects which could be useful to discuss in order to evaluate software.
