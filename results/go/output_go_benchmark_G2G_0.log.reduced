@@ -1,0 +1,636 @@
+************************************************************
+***   Benchmark 1000K   
+************************************************************
+************************************************************
+********************
+********************
+***   FastSemSim   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	0m13.673s
+user	0m13.401s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.1
+real	0m12.744s
+user	0m12.469s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.2
+real	0m13.664s
+user	0m13.405s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	0m13.036s
+user	0m12.797s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.1
+real	0m13.777s
+user	0m13.505s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.2
+real	0m12.930s
+user	0m12.673s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	0m13.862s
+user	0m13.617s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	0m12.864s
+user	0m12.637s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	0m13.842s
+user	0m13.597s
+*** status: 0
+*** seems ok
+*** *** *** ***
+********************
+********************
+***   SML   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	0m9.473s
+user	0m17.585s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.1
+real	0m10.767s
+user	0m18.245s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.2
+real	0m9.797s
+user	0m17.589s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	0m9.847s
+user	0m18.433s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.1
+real	0m10.222s
+user	0m17.493s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.2
+real	0m9.394s
+user	0m17.769s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	0m9.926s
+user	0m18.177s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	0m9.762s
+user	0m17.437s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	0m9.643s
+user	0m18.589s
+*** status: 0
+*** seems ok
+*** *** *** ***
+********************
+********************
+***   SML_parallel   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	0m10.565s
+user	0m19.249s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.1
+real	0m9.582s
+user	0m18.429s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.2
+real	0m9.260s
+user	0m16.789s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	0m10.330s
+user	0m17.545s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.1
+real	0m9.512s
+user	0m17.865s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.2
+real	0m10.643s
+user	0m18.901s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	0m9.806s
+user	0m18.773s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	0m9.618s
+user	0m18.449s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	0m10.401s
+user	0m17.461s
+*** status: 0
+*** seems ok
+*** *** *** ***
+********************
+********************
+***   GOSim   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	1m29.252s
+user	1m28.146s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   0.1
+real	1m29.309s
+user	1m28.382s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   0.2
+real	1m29.454s
+user	1m28.522s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	1m57.991s
+user	1m56.911s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   1.1
+real	1m59.963s
+user	1m58.535s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   1.2
+real	1m58.417s
+user	1m57.139s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	20m59.048s
+user	20m49.870s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	20m47.311s
+user	20m39.261s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	20m36.444s
+user	20m27.845s
+*** status: 0
+*** seems ok
+*** *** *** ***
+********************
+********************
+***   GOSemSim   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	27m5.231s
+user	26m51.025s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.1
+real	27m2.721s
+user	26m49.701s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.2
+real	27m0.028s
+user	26m45.692s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	24m4.732s
+user	23m52.258s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.1
+real	24m4.282s
+user	23m51.825s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.2
+real	24m3.414s
+user	23m50.941s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	25m29.395s
+user	25m16.695s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	25m24.058s
+user	25m11.018s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	25m29.758s
+user	25m17.131s
+*** status: 0
+*** seems ok
+*** *** *** ***
+************************************************************
+***   Benchmark 10000K   
+************************************************************
+************************************************************
+********************
+********************
+***   FastSemSim   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	0m17.111s
+user	0m16.769s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.1
+real	0m17.138s
+user	0m16.853s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.2
+real	0m16.123s
+user	0m15.857s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	0m17.190s
+user	0m16.909s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.1
+real	0m17.065s
+user	0m16.837s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.2
+real	0m16.165s
+user	0m15.829s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	0m17.214s
+user	0m16.909s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	0m17.120s
+user	0m16.885s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	0m16.077s
+user	0m15.841s
+*** status: 0
+*** seems ok
+*** *** *** ***
+********************
+********************
+***   SML   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	0m11.444s
+user	0m20.653s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.1
+real	0m10.406s
+user	0m19.445s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.2
+real	0m11.715s
+user	0m20.581s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	0m10.290s
+user	0m19.141s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.1
+real	0m11.098s
+user	0m20.793s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.2
+real	0m10.875s
+user	0m19.365s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	0m10.311s
+user	0m19.169s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	0m11.358s
+user	0m19.713s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	0m10.290s
+user	0m19.301s
+*** status: 0
+*** seems ok
+*** *** *** ***
+********************
+********************
+***   SML_parallel   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	0m10.842s
+user	0m19.593s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.1
+real	0m9.906s
+user	0m19.481s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   0.2
+real	0m9.979s
+user	0m19.713s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	0m10.551s
+user	0m18.849s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.1
+real	0m9.991s
+user	0m19.569s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   1.2
+real	0m11.582s
+user	0m20.997s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	0m9.988s
+user	0m19.973s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.1
+real	0m10.439s
+user	0m19.713s
+*** status: 0
+*** seems ok
+*** *** *** ***
+*** Run   2.2
+real	0m10.574s
+user	0m19.429s
+*** status: 0
+*** seems ok
+*** *** *** ***
+********************
+********************
+***   GOSim   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	19m8.101s
+user	19m1.047s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   0.1
+real	19m6.970s
+user	18m59.811s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   0.2
+real	19m7.052s
+user	18m59.819s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*-------------------
+***   Run   1
+*-------------------
+*** Run   1.0
+real	5m31.592s
+user	5m29.173s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   1.1
+real	5m32.268s
+user	5m29.733s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   1.2
+real	5m29.822s
+user	5m27.612s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*-------------------
+***   Run   2
+*-------------------
+*** Run   2.0
+real	119m15.854s
+user	118m33.161s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   2.1
+real	118m55.058s
+user	118m11.159s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+*** Run   2.2
+real	119m21.501s
+user	118m38.337s
+*** status: 1
+*** Error: an error occurred or memory or CPU limits have been reached
+*** *** *** ***
+********************
+********************
+***   GOSemSim   
+********************
+********************
+*-------------------
+***   Run   0
+*-------------------
+*** Run   0.0
+real	120m0.958s
+user	118m59.566s
+*** status: 137
+*** Error: an error occurred or memory or CPU limits have been reached
+*** Timout limit: 7200 sec
+*** *** *** ***
+*** Run   0.1

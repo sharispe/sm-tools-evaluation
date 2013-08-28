@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ./scripts/go/GO_T2T.sh 2>&1 | tee /tmp/output_go_benchmark.log
+# ./scripts/go/run.sh 2>&1 | tee /tmp/output_go_benchmark.log
 # grep "\*\|user\|real" /tmp/output_go_benchmark.log  > /tmp/output_go_benchmark.log.reduce
 # cat /tmp/output_go_benchmark.log.reduce
 
@@ -19,7 +19,7 @@ fastsemsim=~/tools/semantic-measures/fastSemSim-0.7.1/fastSemSim.sh
 # set the home directory, i.e. the project root directory & the result directory result_dir
 result_dir=/tmp/sml-tools-evaluation/go
 home_dir=/home/seb/dev/java/workspace/sml-tools-evaluation
-timeout_limit=7200 # ulimit -t timeout in second, negative value or 0 = no constraints
+timeout_limit=14400 #7200 # ulimit -t timeout in second, negative value or 0 = no constraints
 memory_limit_mo=6000 # memory limit in Mo
   # ulimit -v 1Go=1000000 negative value or 0 = no constraints
 remove_output=1 # set to 1 all output files will be removed
@@ -200,10 +200,10 @@ for bsize in ${benchmark_sizes[@]};
 		echo "************************************************************";
 
 		# FastSemSim
-		xtool FastSemSim ${bsize}
+		#xtool FastSemSim ${bsize}
 		
 		# SML-Toolkit
-		xtool SML ${bsize}
+		#xtool SML ${bsize}
 		
 		# SML-Toolkit multiThreads
 		xtool SML_parallel ${bsize}
@@ -212,9 +212,10 @@ for bsize in ${benchmark_sizes[@]};
 		if [ ${bsize} -lt 1000000 ]; then # These tests are too large for them
 
 			# GOSemSim
-			xtool GOSim ${bsize}
+			echo "-"
+			#xtool GOSim ${bsize}
 		
 			# GOSemSim
-			xtool GOSemSim ${bsize}
+			#xtool GOSemSim ${bsize}
 		fi
 	done
