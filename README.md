@@ -103,7 +103,7 @@ We currently compare:
 Below the digested results.
 Details can be found in the following subsections.
 'X' means that the tests have not be performed, due to the performance of the tools.
-'!' means that the constraints have been reached and that the computation failed (constaints are specified, e.g., running time, amount of memory the tool can use). 
+'!' means that the constraints have been reached and that the computation failed (constraints are specified, e.g., running time, amount of memory the tool can use). 
 SML Par(4) corresponds to the SML configured with 4 threads, i.e. to enable parallel computation on multi-core CPU.
 
 ##### Term to Term test
@@ -200,7 +200,7 @@ This tool is used to generate benchmarks composed of pairs of GO terms.
 It has been used to generate TSV files containing pairs of GO terms identifiers (one per line). 
 Four sizes of benchmarks are considered (1K, 10K, 1M and 100M). 
 As we said, for each size, three sets of pairs are generated.
-The benchmarks are built selecting random pairs of terms specified in the Biological Process aspect of the GO 
+The benchmarks have been build selecting random pairs of terms specified in the Biological Process aspect of the GO 
 (all pairs are of terms are composed of terms subsumed by the term GO:0008150).
 In addition, all terms which appear in the test are at least used to annotate a gene defined in dump_orgHsegGO.tsv.
 Indeed some library cannot compute the similarity of terms which are not used to annotate at least one gene (This is due to the computation of Resnik's Information Content). 
@@ -296,13 +296,13 @@ We therefore suspect GOSim and GOSemSim to not differentiate the type of relatio
 
 The Pearson correlations between the results produced by the tools are:
 
-|          | FSS    | FSS ISA |  SML     | GOSIM | GOSEMSIM |
+|          | FastSemSim    | FSS ISA |  SML     | GOSIM | GOSEMSIM |
 | -------    |:------:| :------:|:--------:|:-----:|:--------:|
 | FastSemSim | 1	    | 0.68    |  0.69    | 0.85  | 0.86     |
 | FSS ISA    |        | 1       | **0.99** | 0.58  | 0.58     |
 | SML        |        |         |  1       | 0.57  | 0.58     |
 | GOSim      |        |         |          | 1     | 0.99     |
-| GOSim      |        |         |          |       | 1        |
+| GOSemSim      |        |         |          |       | 1        |
 
 We observe that GOSIM and GOSemSim have a maximal Pearson correlation (0.99).
 Both tools rely on GO.db package. 
@@ -315,9 +315,9 @@ We found that FSS, GOSim and GOSemSim perform treatments which are not in accord
 Indeed, IC-based measures clearly rely on the taxonomic graph in order to be computed.
 The taxonomic graph is the subgraph of the ontology which only contains isa relationships (rdfs:subClassOf).
 This graph is considered to compute the ancestors of a terms and is therefore important to compute the Most Informative Common Ancestor (or Disjoint Common Ancestors) in Information Content based measures.
-FastSemSim, GOSim and GOSemSim do not only consider taxonomic relationships to compute the ancestors, which explains the variation obtained.
+FastSemSim, GOSim and GOSemSim consider other relationships than taxonomic ones to compute the ancestors, which explains the variation obtained.
 They also consider part-of relationships (or even regulates in FSS) to define ancestors. 
-To ensure that the poor correlations were due to this difference, we build a modified version the FastSemSim library (see build 0.7.1.1 in `/resources/tools`).
+To ensure that the poor correlations were due to this difference, we built a modified version the FastSemSim library (see build 0.7.1.1 in `/resources/tools`).
 This version can be used to compute the similarities using FSS source code and only considering `is-a` relationships when ancestors are computed.
 Considering this modification we obtained the expected corelation between FastSemSim and the SML (0.99).
 
