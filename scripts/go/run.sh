@@ -39,7 +39,8 @@ prefix_benchmark_pairwise=${home_dir}/resources/data/go/benchmarks/benchmark_pai
 prefix_benchmark_groupwise=${home_dir}/resources/data/go/benchmarks/benchmark_groupwise_
 
 #benchmark_sizes=(1000) # used to evaluate the correlations
-benchmark_sizes=(1000 10000 1000000 100000000)
+#benchmark_sizes=(1000 10000 1000000 100000000)
+benchmark_sizes=(100000000)
 
 mkdir -p ${result_dir}
 
@@ -203,10 +204,10 @@ for bsize in ${benchmark_sizes[@]};
 		#xtool FastSemSim ${bsize}
 		
 		# SML-Toolkit
-		#xtool SML ${bsize}
+		xtool SML ${bsize}
 		
 		# SML-Toolkit multiThreads
-		xtool SML_parallel ${bsize}
+		#xtool SML_parallel ${bsize}
 		
 
 		if [ ${bsize} -lt 1000000 ]; then # These tests are too large for them
