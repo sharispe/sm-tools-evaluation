@@ -12,13 +12,13 @@ test_to_perform=G2G_test
 
 
 
-sml=~/dev/java/workspace/sml-tools-evaluation/resources/tools/sml-toolkit-0.7-beta.jar
+sml=~/dev/java/workspace/sm-tools-evaluation/resources/tools/sml-toolkit-0.7-beta.jar
 fastsemsim=~/tools/semantic-measures/fastSemSim-0.7.1/fastSemSim.sh
 #fastsemsim=~/tools/semantic-measures/fastSemSim-0.7.1.1/fastSemSim.sh
 
 # set the home directory, i.e. the project root directory & the result directory result_dir
-result_dir=/tmp/sml-tools-evaluation/go
-home_dir=/home/seb/dev/java/workspace/sml-tools-evaluation
+result_dir=/tmp/sm-tools-evaluation/go
+home_dir=/home/seb/dev/java/workspace/sm-tools-evaluation
 timeout_limit=14400 #7200 # ulimit -t timeout in second, negative value or 0 = no constraints
 memory_limit_mo=6000 # memory limit in Mo
   # ulimit -v 1Go=1000000 negative value or 0 = no constraints
@@ -39,8 +39,8 @@ prefix_benchmark_pairwise=${home_dir}/resources/data/go/benchmarks/benchmark_pai
 prefix_benchmark_groupwise=${home_dir}/resources/data/go/benchmarks/benchmark_groupwise_
 
 #benchmark_sizes=(1000) # used to evaluate the correlations
-#benchmark_sizes=(1000 10000 1000000 100000000)
-benchmark_sizes=(100000000)
+benchmark_sizes=(1000 10000 1000000 100000000)
+#benchmark_sizes=(100000000)
 
 mkdir -p ${result_dir}
 
@@ -204,10 +204,10 @@ for bsize in ${benchmark_sizes[@]};
 		#xtool FastSemSim ${bsize}
 		
 		# SML-Toolkit
-		xtool SML ${bsize}
+		#xtool SML ${bsize}
 		
 		# SML-Toolkit multiThreads
-		#xtool SML_parallel ${bsize}
+		xtool SML_parallel ${bsize}
 		
 
 		if [ ${bsize} -lt 1000000 ]; then # These tests are too large for them
