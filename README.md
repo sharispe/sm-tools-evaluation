@@ -8,8 +8,8 @@ It can therefore be useful for:
 * (i) end-users who want to select a tool to compute semantic measures;
 * (ii) developers who want to compare their tools.
 
->The project currently focuses on graph-based semantic measures, e.g. measures aiming to assess the similarity of class/concepts/terms defined in ontologies.
->As an example, this project doesn't evaluate tools related to distributional semantic measures.
+>The project currently focuses on graph-based semantic measures, e.g. measures used to assess the similarity of class/concepts/terms defined in ontologies (also denoted as measures based on the relational setting).
+>As an example, this project doesn't evaluate tools related to distributional semantic measures or semantic measures relying on description logic.
 
 We currently propose domain-specific evaluations. 
 Indeed, numerous library and tools have been developed for domain-specific applications (e.g. ontologies/terminologies) and (to our knowledge) no project compare those software solutions. 
@@ -23,9 +23,9 @@ The domain for which test are available are:
 > More evaluation relative to other domain or application context will be added (WordNet, UMLS, Disease Ontology). 
 > This community project is public and open source - do not hezitate to contribute (see above).
 
-**Important**: this project do not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be relevant to compare tools.
+**Important**: this project does not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be relevant to compare tools.
 Keep in mind that tools which do not perform well on the tests defined herein may have other advantages not discussed in this evaluation.
-Please contact us to help us improve it.
+Please contact us to help us improving it.
 In addition, this evaluation doesn't pretend to cover all aspects which could be useful to discuss in order to evaluate software.
 We here focus on **objective metrics** and mainly aim at evaluating the speed of the program given specific resource constraints (memory allocated to the tool, computational time).
 Moreover, we only provide tests and results which are **strictly reproducible** given the source code and information shared through this project.
@@ -102,8 +102,8 @@ We currently compare:
 
 Below the digested results.
 Details can be found in the following subsections.
-'X' means that the tests have not be performed, due to the performance of the tools.
-'!' means that the constraints have been reached and that the computation failed (constraints are specified, e.g., running time, amount of memory the tool can use). 
+* 'X' means that the tests have not be performed, due to the performance of the tools.
+* '!' means that the at least one of the constraints has been reached and that the computation failed (constraints are specified, e.g., running time, amount of memory the tool can use). 
 SML Par(4) corresponds to the SML configured with 4 threads, i.e. to enable parallel computation on multi-core CPU.
 
 ##### Term to Term test
@@ -201,11 +201,11 @@ It has been used to generate TSV files containing pairs of GO terms identifiers 
 Four sizes of benchmarks are considered (1K, 10K, 1M and 100M). 
 As we said, for each size, three sets of pairs are generated.
 The benchmarks have been build selecting random pairs of terms specified in the Biological Process aspect of the GO 
-(all pairs are of terms are composed of terms subsumed by the term GO:0008150).
+(all pairs of terms are composed of terms subsumed by the term GO:0008150).
 In addition, all terms which appear in the test are at least used to annotate a gene defined in dump_orgHsegGO.tsv.
 Indeed some library cannot compute the similarity of terms which are not used to annotate at least one gene (This is due to the computation of Resnik's Information Content). 
 
-The samples used for the tests can be downloaded at 
+The samples used for the tests can be downloaded at http://www.semantic-measures-library.org/sml/downloads/evaluations/sm-tools-evaluation/resources/data/go/benchmarks/
 They are expected to be decompressed and located in `resources/data/go/benchmarks` directory.
 
 We selected Lin Information Content based  (IC-based) measure to evaluate the performance of the tools.
@@ -215,8 +215,8 @@ This two treatments are the most time consuming of all IC-based measures (e.g. R
 
 The script which is used to perform the test can be found at `/scripts/go/run.sh`.
 This script is used to launch the tests considering the tools have been installed and the dataset downloaded.
-If you try to reproduce the results, please edit the variable at the beginning of the script (e.g. installation and output directory).
-The script also specifies two constraints you can be modified editing the script.
+If you try to reproduce the results, please edit the variables at the beginning of the script (e.g. installation and output directory).
+The script also specifies two constraints that can be modified by editing the script.
 This must be required depending on your hardware configuration.
 The constraint we considered are:
 - memory consumption : processes cannot use more than 6Go memory
@@ -246,7 +246,9 @@ grep "\*\|user\|real" /results/go/output_go_benchmark_T2T.log
 ```
 
 To extract the information relative to execution time and to store it into `/tmp/output_go_benchmark.log.reduce`
+```
 grep "\*\|user\|real" /tmp/output_go_benchmark.log  > /results/go/output_go_benchmark_T2T.log
+```
 
 The average values have been computed using a spreadsheet application.
 
@@ -257,8 +259,8 @@ The average values have been computed using a spreadsheet application.
 The detailed results for each run can be consulted at `results/go/benchmark_result_pairwise.xlsx` (ods).
 They have been extracted from the log file `results/go/output_go_benchmark_GT2.log`.
 Below the digested results, results for all runs are available in the spreadsheet.
-'X' means that the tests have not be performed (due to the performance of the tools).
-'!' means that the constraints have been reached and that the computation failed. 
+* 'X' means that the tests have not be performed (due to the performance of the tools).
+* '!' means that one of the constraints has been reached and that the computation failed. 
 SML Par(4) corresponds to the SML configured with 4 threads, i.e. to enable parallel computation on multi-core CPU (only adding `-threads 4` to the classical SML command line).
 
 |          	 |  1K        | 10K        |  1M           | 100M           |  
@@ -284,14 +286,16 @@ This behavior changes the common ancestors or the most informative common ancest
 The results of this version for sample r0_0 can be found at `results/go/r_10000_FastSemSim_7.1.1_0_0.tsv` (then can also be reproduced modifying run.sh script).
 
 GOSim and GOSemSim relies on GO.db R package http://www.bioconductor.org/packages/2.12/data/annotation/html/GO.db.html
-They also considers as ancestors of a concept x, concept which are not subsuming x according to is-a relationships.
+They also consider as ancestors of a concept x, concepts that are not subsuming x according to is-a relationships.
 See http://www.bioconductor.org/packages/2.13/data/annotation/manuals/GO.db/man/GO.db.pdf:
 GOBPPARENTS details: 
-"Each GO BP term is mapped to a named vector of GO BP terms. 
-The name associated with the parent term will be either isa, hasa or partof, 
-where isa indicates that the child term is a more speciﬁc version of the parent, 
-and hasa and partof indicate that the child term is a part of the parent. 
-For example, a telomere is part of a chromosome.".
+
+> "Each GO BP term is mapped to a named vector of GO BP terms. 
+> The name associated with the parent term will be either isa, hasa or partof, 
+> where isa indicates that the child term is a more speciﬁc version of the parent, 
+> and hasa and partof indicate that the child term is a part of the parent. 
+> For example, a telomere is part of a chromosome.".
+
 We therefore suspect GOSim and GOSemSim to not differentiate the type of relationships when the common ancestors are computed.
 
 The Pearson correlations between the results produced by the tools are:
@@ -338,9 +342,9 @@ However, this is not a problem for Gene to Gene comparisons as all pairwise comp
 * GOSim and GOSemSim precompute the IC and can be used to handle large quantity of annotations. 
 Loading all UniprotKB annotations to compute the IC using FastSemSim or the SML is currently not possible.
 This is due to the fact that both the SML and FastSemSim use in-memory loaded annotations.
-Note however that the IC must be computed regarding your application context.
+Note however that the IC must be computed regarding the application context.
 Indeed, if you study human genes, the IC must be computed only considering human gene annotations.
-FastSemSim and the SML are perfectly adapted to handle those use cases. 
+FastSemSim and the SML are perfectly adapted to handle such use cases. 
 
 
 
@@ -357,7 +361,7 @@ Four sizes have been considered, 10k, 100k, 1M and 100M of pairs of gene product
 
 The sets of pairs of gene products have been generated using the tool sml-tools-evaluation-generate-go-benchmarks.jar (open source, see above for more information).
 
-No restriction is applied on the Evidence Code associated to the annotations linked to the considered gene product (e.g., IEA annotations are considered). In addition, only BP annotation were used during this test.
+No restriction is applied on the Evidence Code associated to the annotations linked to the considered gene product (e.g., IEA annotations are considered). In addition, only BP annotations were used during this test.
 
 The constraints considered are:
 - memory consumption: processes cannot use more than 6Go memory.
@@ -526,5 +530,12 @@ Competing interests
 
 This project has been initiated in order to evaluate the Semantic Measures Library www.semantic-measures-library.org.
 As the developers of these tests are also developers of the SML we cannot ensure that this evaluation is free from bias.
-Indeed we better know how to configure and use the SML than other tools. Do not hesitate to help us improve those tests !
+Indeed we better know how to configure and use the SML than other tools. Do not hesitate to help us improve those tests!
 
+
+Contributors
+--------------------
+
+* Sylvie Ranwez - PhD. LGI2P research center
+* Stefan Janaqi - PhD. LGI2P research center
+* Jacky Montmain - Profesor LGI2P research center

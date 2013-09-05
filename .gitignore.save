@@ -1,0 +1,5 @@
+resources/data/*
+!resources/data/test/*
+.RData
+?Rhistory
+sml-xmlconf.xml
