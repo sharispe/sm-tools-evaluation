@@ -535,7 +535,7 @@ Indeed we better know how to configure and use the SML than other tools. Do not 
 
 Contributors
 --------------------
-
+* Sébastien Harispe - PhD. LGI2P research center
 * Sylvie Ranwez - PhD. LGI2P research center
 * Stefan Janaqi - PhD. LGI2P research center
 * Jacky Montmain - Professor LGI2P research center
