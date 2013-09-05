@@ -538,4 +538,4 @@ Contributors
 
 * Sylvie Ranwez - PhD. LGI2P research center
 * Stefan Janaqi - PhD. LGI2P research center
-* Jacky Montmain - Profesor LGI2P research center
+* Jacky Montmain - Professor LGI2P research center
