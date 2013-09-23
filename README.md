@@ -1,9 +1,9 @@
 Evaluation of Software for Semantic Measures
 ==============================================================
 
-This project aims to compare tools dedicated to semantic measures computation (software, source code libraries).
+This project aims to compare tools dedicated to the computation of semantic measures (software, source code libraries).
 It has been initiated in order to evaluate the Semantic Measures Library and corresponding Toolkit (http://www.semantic-measures-library.org), see the competing interest section for more information.
-Note that the project however doesn't focus on the Semantic Measures Library and includes comparison of several tools.
+However, note that the project doesn't focus on the Semantic Measures Library and includes comparison of several tools.
 It can therefore be useful for:
 * (i) end-users who want to select a tool to compute semantic measures;
 * (ii) developers who want to compare their tools.
@@ -12,22 +12,22 @@ It can therefore be useful for:
 >As an example, this project doesn't evaluate tools related to distributional semantic measures or semantic measures relying on description logic.
 
 We currently propose domain-specific evaluations. 
-Indeed, numerous library and tools have been developed for domain-specific applications (e.g. ontologies/terminologies) and (to our knowledge) no project compare those software solutions. 
+Indeed, numerous libraries and tools have been developed for domain-specific applications (e.g. ontologies/terminologies) and (to our knowledge) no project compares those software solutions. 
 In this project, considering specific domain of use, we compare tools regarding their speed performance (running time) and their capacity to handle large datasets.
 
-The domain for which test are available are:
+The domain for which tests are available are:
 
  * **Molecular Biology and Biomedicine**
    * **Gene Ontology**
 
 > More evaluation relative to other domain or application context will be added (WordNet, UMLS, Disease Ontology). 
-> This community project is public and open source - do not hezitate to contribute (see above).
+> This community project is public and open source - do not hesitate to contribute (see above).
 
 **Important**: this project does not aim to criticize tools or denigrate the work made by their developers - we only define a strict evaluation protocol to provide objective metrics which can be relevant to compare tools.
-Keep in mind that tools which do not perform well on the tests defined herein may have other advantages not discussed in this evaluation.
-Please contact us to help us improving it.
+Keep in mind that tools which do not perform well on the tests defined herein may have other advantages that are not discussed in this evaluation.
+Please contact us to help us improve upon it.
 In addition, this evaluation doesn't pretend to cover all aspects which could be useful to discuss in order to evaluate software.
-We here focus on **objective metrics** and mainly aim at evaluating the speed of the program given specific resource constraints (memory allocated to the tool, computational time).
+Here we focus on **objective metrics** and mainly aim at evaluating the speed of the program given specific resource constraints (memory allocated to the tool, computational time).
 Moreover, we only provide tests and results which are **strictly reproducible** given the source code and information shared through this project.
 Our aim is not to discuss aspects relative to the (subjective) individual user experience or other important aspects such as documentation and code quality, usability, overall sustainability, community support, release updates...
 Please refer to corresponding tool documentations and websites to evaluate those aspects.
@@ -35,17 +35,17 @@ More general information related to software evaluation can be found at http://w
 
 The source code used in this project is open source, it can be used to reproduce the tests. 
 Details regarding the materials and methods used in the evaluations are also specified for each test.
-However, due to github constraints regarding file sizes, some datasets may not be included in this community project ; they are made available through other websites. 
+However, due to github constraints regarding file sizes, some datasets may not be included in this community project; they are made available through other websites. 
 
 > Do not hesitate to help us improve the benchmarks and to upgrade the tests with new tools or new versions of considered tools. 
 > The issue tracker can be used to discuss any problems regarding the source code or the test protocols.
 >
-> You can also contribute to the project to:
-> * (i) add new tools or upgrade existing tools or datasets;
-> * (ii) add new tests; 
-> * (iii) fix bugs, improve the source code (e.g. tool parameters).
+> You can also contribute to the project by:
+> * (i) adding new tools or upgrade existing tools or datasets;
+> * (ii) adding new tests; 
+> * (iii) fixing bugs, improve the source code (e.g. tool parameters).
 >
-> Approaved contributions will next be incorporated to this project.
+> Approved contributions will be subsequently incorporated into this project.
 
 
 
@@ -59,10 +59,10 @@ However, due to github constraints regarding file sizes, some datasets may not b
 
 How to Reproduce Tests and Results
 --------------
-The source code is developed in order to be executed on any 64-Bit Linux operating system considering that tested tools dependencies are installed (e.g. Python, Java, R - refer to evaluated tools).
+The source code has been developed in order to be executed on any 64-Bit Linux operating system considering that tested tools dependencies are installed (e.g. Python, Java, R - refer to evaluated tools).
 I personally used the easy-to-use Ubuntu distribution (LTS 12.04) but other distributions can be used (Windows users can deploy a virtual machine to reproduce the tests). 
-The tests can therefore be reproduced, download the repository and follow the instructions. 
-Please, start a discussion if you encounter any problems.
+The tests can therefore be reproduced; simply download the repository and follow the instructions. 
+Please start a discussion if you encounter any problems.
 
 > Note that results may vary considering your hardware configuration but rankings must be the same.
 
@@ -73,7 +73,7 @@ This section contains all tests relative to computation of semantic measures sco
 
 ### Gene Ontology
 
-> The Gene Ontology, or GO, is a major bioinformatics initiative to unify the representation of gene and gene product attributes across all species.More specifically, the GO aims to:
+> The Gene Ontology, or GO, is a major bioinformatics initiative for unifying the representation of gene and gene product attributes across all species.More specifically, the GO aims to:
 > * Maintain and develop its controlled vocabulary of gene and gene product attributes;
 > * Annotate genes and gene products, and assimilate and disseminate annotation data;
 > * Provide tools for easy access to all aspects of the data provided by the project.
@@ -81,12 +81,12 @@ This section contains all tests relative to computation of semantic measures sco
 >
 > source: Wikipedia http://en.wikipedia.org/wiki/Gene_Ontology
 
-We here focus on the evaluation of tools to compute semantic measure scores considering the GO (www.geneontology.org).
+Here we focus on the evaluation of tools to compute semantic measure scores considering the GO (www.geneontology.org).
 
 
 Two tests have been performed:
-* **Term to Term similarity computations**, in which tools are compared computing the semantic similarity of pairs of terms defined in the Gene Ontology.
-* **Gene Product to Gene Product similarity computations**, in which tools are compared computing the semantic similarity of genes annotated by terms defined in the Gene Ontology.
+* **Term to Term similarity computations**, in which tools are compared by computing the semantic similarity of pairs of terms defined in the Gene Ontology.
+* **Gene Product to Gene Product similarity computations**, in which tools are compared by computing the semantic similarity of genes annotated by terms defined in the Gene Ontology.
 
 #### Compared Tools  
 
@@ -100,9 +100,9 @@ We currently compare:
 
 #### Quick Results
 
-Below the digested results.
+Below are the digested results.
 Details can be found in the following subsections.
-* 'X' means that the tests have not be performed, due to the performance of the tools.
+* 'X' means that the tests have not been performed, due to the performance of the tools.
 * '!' means that the at least one of the constraints has been reached and that the computation failed (constraints are specified, e.g., running time, amount of memory the tool can use). 
 SML Par(4) corresponds to the SML configured with 4 threads, i.e. to enable parallel computation on multi-core CPU.
 
@@ -145,10 +145,10 @@ The version of Bioconductor which has been used in this test is version 2.12 see
 
 FastSemSim loads any GO specified in OBO-XML and the SML is able to load the OWL/RDF-XML and OBO formatted versions.
 
-The file which have been used for this tests is `go_20130302-termdb.obo-xml.gz`.
+The file which has been used for this tests is `go_20130302-termdb.obo-xml.gz`.
 It can be found in the directory `/data/go/onto` or at ftp://ftp.geneontology.org/pub/go/godatabase/archive/lite/2013-03-02/
 
-Note also that we converted the obo.xml format to obo using  go-perl package http://search.cpan.org/~cmungall/go-perl/
+Also note that we converted the obo.xml format to obo using  go-perl package http://search.cpan.org/~cmungall/go-perl/
 `./scripts/go2fmt.pl -w obo OBO_XML_FILE > OBO_FILE `.
 The OBO file has been saved under the name `go_20130302-termdb.obo`.
 The `hold_over_chain` tags of typedef definitions have been commented as go-perl doesn't support them.
@@ -158,8 +158,8 @@ The `hold_over_chain` tags of typedef definitions have been commented as go-perl
 GOSim and GOSemSim rely on the GO annotations defined in the R package org.Hs.eg.GO.
 See http://www.bioconductor.org/packages/2.12/data/annotation/manuals/org.Hs.eg.db/man/org.Hs.eg.db.pdf for more information on the version of the annotations used. 
 
-FastSemSim and the SML rely on GAF or plain annotations files.
-We encountered difficulties to download the GAF file associated to the annotations corresponding to the one loaded in the R package (on which rely GOSim and GOSemSim).
+FastSemSim and the SML rely on GAF or plain annotation files.
+We encountered difficulties in downloading the GAF file associated to the annotations corresponding to the one loaded in the R package (on which rely GOSim and GOSemSim).
 In order to ensure that the annotations used for the evaluation are the same, we created a dump of org.Hs.eg.GO using the R script named dump_orgHsegGO.R. (`/scripts/go/`).
 This script generates a TSV file containing the GO annotation for all human genes specified in org.Hs.eg.GO.
 
@@ -173,7 +173,7 @@ The annotation dumps used in the tests can be found at `/resources/data/go/annot
 
 #### Test 1: Term to Term computations
 
-This test aims to compare the tools for the computation of semantic similarities between pair of terms defined in the Gene Ontology.
+This test aims to compare the tools for the computation of semantic similarities between a pair of terms defined in the Gene Ontology.
 Four tests have been designed. 
 Each test is composed of a set of pair of terms for which we want the semantic similarity to be computed.
 Four tests of different sizes have been generated:
@@ -183,10 +183,10 @@ Four tests of different sizes have been generated:
 * 1M pairs of terms
 * 100M pairs of terms
 
-For each test of size x, 3 random samples of size x have been generated in order to reduce the probability the evaluation of the performance is biased by abnormal sampling.
-As an example the test composed of 1K pairs of terms is composed of three different samples r0, r1, r2.
+For each test of size x, 3 random samples of size x have been generated in order to reduce the probability that the evaluation of the performance is biased by abnormal sampling.
+As an example, the test composed of 1K pairs of terms is composed of three different samples r0, r1, r2.
 For each sample (e.g. r1), three runs (r1.0, r1.1, r1.2) have been performed.
-This is to reduce the probability results are biased by abnormal operating system behavior or material lags.
+This is to reduce the probability that results are biased by abnormal operating system behavior or material lags.
 
 The sets of pairs of terms composing the 3 samples of each test have been generated using the tool `sml-tools-evaluation-generate-go-benchmarks.jar`.
 Both the tool and its source code can be found at `scripts/go/`.
@@ -200,18 +200,18 @@ This tool is used to generate benchmarks composed of pairs of GO terms.
 It has been used to generate TSV files containing pairs of GO terms identifiers (one per line). 
 Four sizes of benchmarks are considered (1K, 10K, 1M and 100M). 
 As we said, for each size, three sets of pairs are generated.
-The benchmarks have been build selecting random pairs of terms specified in the Biological Process aspect of the GO 
+The benchmarks have been built selecting random pairs of terms specified in the Biological Process aspect of the GO 
 (all pairs of terms are composed of terms subsumed by the term GO:0008150).
 In addition, all terms which appear in the test are at least used to annotate a gene defined in dump_orgHsegGO.tsv.
-Indeed some library cannot compute the similarity of terms which are not used to annotate at least one gene (This is due to the computation of Resnik's Information Content). 
+Indeed, some libraries cannot compute the similarity of terms which are not used to annotate at least one gene (This is due to the computation of Resnik's Information Content). 
 
 The samples used for the tests can be downloaded at http://www.semantic-measures-library.org/sml/downloads/evaluations/sm-tools-evaluation/resources/data/go/benchmarks/
 They are expected to be decompressed and located in `resources/data/go/benchmarks` directory.
 
 We selected Lin Information Content based  (IC-based) measure to evaluate the performance of the tools.
-Lin is a commonly used measures to compare two concepts/terms defined in an ontology.
+Lin is a commonly used measure to compare two concepts/terms defined in an ontology.
 It requires the Most Informative Common Ancestor of the compared terms and (by default) Resnik IC to be computed.
-This two treatments are the most time consuming of all IC-based measures (e.g. Resnik, Lin, SimRel) and IC-based measures are the most commonly used measures. 
+These two treatments are the most time consuming of all IC-based measures (e.g. Resnik, Lin, SimRel) and IC-based measures are the most commonly used measures. 
 
 The script which is used to perform the test can be found at `/scripts/go/run.sh`.
 This script is used to launch the tests considering the tools have been installed and the dataset downloaded.
@@ -219,13 +219,13 @@ If you try to reproduce the results, please edit the variables at the beginning 
 The script also specifies two constraints that can be modified by editing the script.
 This must be required depending on your hardware configuration.
 The constraint we considered are:
-- memory consumption : processes cannot use more than 6Go memory
-- Time constraint : processes cannot take more than two hours
+- memory consumption: processes cannot use more than 6Go of memory
+- Time constraint: processes cannot take more than two hours
 
-If those constraints are not respected the execution of the program is stopped.
+If these constraints are not respected, the execution of the program stops.
 
-> Due to their performance GOSim and GOSemSim are not considered for the large tests.
-> This can be modified modifying the script run.sh.
+> Due to their performance, GOSim and GOSemSim are not considered for the large tests.
+> This can be modified editing the script run.sh.
 
 GOSim and GOSemSim do not have command line interfaces.
 We therefore developed two scripts which can be used to compute all the similarities for the pairs of entries (terms or gene products) contained in a file.
@@ -280,8 +280,8 @@ The details can be found in results/go/correlations_tools_r0_0.ods
 
 FSS ISA corresponds to the results obtained using a special build of the FastSemSim library only considering `is-a` relationships, version 0.7.1.1 (see `resources/tools/`).
 This version is not an official release supported by Marco Mina, the developer of FastSemSim. 
-This build has been made in order to change an undesired behavior relative to the way version 0.7.1 compute parents/ancestors.
-Indeed version 7.1 considers all types of relationship as isa/rdfs:subClassOf relationships when parents are computed.
+This build has been made in order to change undesired behavior relative to the way version 0.7.1 compute parents/ancestors.
+Indeed, version 7.1 considers all types of relationship as isa/rdfs:subClassOf relationships when parents are computed.
 This behavior changes the common ancestors or the most informative common ancestor of two terms which will be considered by the measures. 
 The results of this version for sample r0_0 can be found at `results/go/r_10000_FastSemSim_7.1.1_0_0.tsv` (then can also be reproduced modifying run.sh script).
 
@@ -318,23 +318,23 @@ We investigated the results to understand which are the causes of the difference
 We found that FSS, GOSim and GOSemSim perform treatments which are not in accordance with the original definition of Information Content based measures.
 Indeed, IC-based measures clearly rely on the taxonomic graph in order to be computed.
 The taxonomic graph is the subgraph of the ontology which only contains isa relationships (rdfs:subClassOf).
-This graph is considered to compute the ancestors of a terms and is therefore important to compute the Most Informative Common Ancestor (or Disjoint Common Ancestors) in Information Content based measures.
+This graph is considered to compute the ancestors of a term and is therefore important to compute the Most Informative Common Ancestor (or Disjoint Common Ancestors) in Information Content based measures.
 FastSemSim, GOSim and GOSemSim consider other relationships than taxonomic ones to compute the ancestors, which explains the variation obtained.
 They also consider part-of relationships (or even regulates in FSS) to define ancestors. 
 To ensure that the poor correlations were due to this difference, we built a modified version the FastSemSim library (see build 0.7.1.1 in `/resources/tools`).
 This version can be used to compute the similarities using FSS source code and only considering `is-a` relationships when ancestors are computed.
-Considering this modification we obtained the expected corelation between FastSemSim and the SML (0.99).
+Considering this modification we obtained the expected correlation between FastSemSim and the SML (0.99).
 
-> Most of result variations can be explained by differences between the various interpretations and implementations of measures proposed by the libraries.
+> Most result variations can be explained by differences between the various interpretations and implementations of measures proposed by the libraries.
 
 ###### Observations
 
 * Comparing random pairs of terms, FastSemSim produces a large number of values set to None, which cannot be exploited by other algorithms.
 This is not an error as it is due to the way FastSemSim computes Resnik Information Content.
-Remind that IC(term1) = -log(p(term1)) with p(term1) the probability term1 is used in the annotation repository.
-Considering that some terms (e.g. terminal terms) are not used in the repository, the probability they occur is nil and their IC is set to infinity.
-By applying a strict implementation, FastSemSim refuses to process those pairs and is therefore limiting to compute pairwise similarity measures (not that the IC cannot be changed).
-Refers to the class TermSemSim method int_validate_single_term of the module TermSemSim  (if self.util.IC[term] == None: return None). 
+Remember that IC(term1) = -log(p(term1)) with p(term1) the probability term1 is used in the annotation repository.
+Considering that some terms (e.g. terminal terms) are not used in the repository, the probability that they occur is nil and their IC is set to infinity.
+By applying a strict implementation, FastSemSim refuses to process those pairs and is therefore limited to computing pairwise similarity measures (not that the IC cannot be changed).
+Refer to the class TermSemSim method int_validate_single_term of the module TermSemSim  (if self.util.IC[term] == None: return None). 
 However, this is not a problem for Gene to Gene comparisons as all pairwise computations involve terms which have been used by at least one gene. 
 
 * Due to their performance GOSim and GOSemSim have been excluded from the large tests
@@ -342,7 +342,7 @@ However, this is not a problem for Gene to Gene comparisons as all pairwise comp
 * GOSim and GOSemSim precompute the IC and can be used to handle large quantity of annotations. 
 Loading all UniprotKB annotations to compute the IC using FastSemSim or the SML is currently not possible.
 This is due to the fact that both the SML and FastSemSim use in-memory loaded annotations.
-Note however that the IC must be computed regarding the application context.
+Note, however, that the IC must be computed regarding the application context.
 Indeed, if you study human genes, the IC must be computed only considering human gene annotations.
 FastSemSim and the SML are perfectly adapted to handle such use cases. 
 
@@ -355,16 +355,16 @@ FastSemSim and the SML are perfectly adapted to handle such use cases.
 
 
 This test aims to compare the tools to compute semantic similarities between pairs of gene products annotated by terms defined in the Gene Ontology.
-The protocol is similar to the one used for the comparison based on term similarity computation.
+The protocol is similar to the one used for the comparison based on the computation of term similarity.
 Four tests have been designed. Each test is composed of a set of pairs of gene products for which we want the semantic similarity to be computed. 
-Four sizes have been considered, 10k, 100k, 1M and 100M of pairs of gene products.
+Four sizes have been considered, 10k, 100k, 1M and 100M pairs of gene products.
 
 The sets of pairs of gene products have been generated using the tool sml-tools-evaluation-generate-go-benchmarks.jar (open source, see above for more information).
 
 No restriction is applied on the Evidence Code associated to the annotations linked to the considered gene product (e.g., IEA annotations are considered). In addition, only BP annotations were used during this test.
 
 The constraints considered are:
-- memory consumption: processes cannot use more than 6Go memory.
+- memory consumption: processes cannot use more than 6Go of memory.
 - time constraint: processes cannot take more than four hours.
 
 ##### Results
@@ -376,7 +376,7 @@ They have been extracted from the log file `results/go/output_go_benchmark_G2G.l
 Note that the first log `/results/go/output_go_benchmark_G2G_O.log` stores the errors for GOSim and GOSemSim.
 
 Below the digested results.
-'X' means that the tests have not be performed (due to the performance of the tools).
+'X' means that the tests have not been performed (due to the performance of the tools).
 '!' means that the constraints have been reached and that the computation failed. 
 SML Par(4) corresponds to the SML configured with 4 threads (add `-threads 4` to the classical SML command line).
 
@@ -530,7 +530,8 @@ Competing interests
 
 This project has been initiated in order to evaluate the Semantic Measures Library www.semantic-measures-library.org.
 As the developers of these tests are also developers of the SML we cannot ensure that this evaluation is free from bias.
-Indeed we better know how to configure and use the SML than other tools. Do not hesitate to help us improve those tests!
+Indeed we have a better knowledge of how to configure and use the SML than other tools. 
+Do not hesitate to help us improve these tests!
 
 
 Contributors
